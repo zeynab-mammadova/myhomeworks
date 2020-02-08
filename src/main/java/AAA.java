@@ -8,5 +8,14 @@ public class AAA {
         System.out.println("Hello "+ name);
         System.out.println("Nice to meet you "+ name);
         System.out.println("Bye "+ name);
+        System.out.println("How old are you? ");
+        Scanner inp= new Scanner(System.in);
+        int old= in.nextInt();
+        if (old<18){
+            System.out.println("Go to the cinema");
+        }
+        else
+            System.out.println("Go to the club");
+
     }
 }
