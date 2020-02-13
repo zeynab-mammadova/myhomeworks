@@ -1,4 +1,4 @@
-public class Arrays {
+public class Array {
     public static void main(String[] args) {
         int MAX =20;
         int r;
