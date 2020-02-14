@@ -20,7 +20,7 @@ Random random=new Random();
     public String toString(){
         String display;
         display="Human{ name='"+this.name+"', surname='"+this.surname+"', year="+this.year+", iq="+this.iq+", mother='"+this.mother.name+" "+this.mother.surname+"', father='"+this.father.name+" "+this.father.surname+"', ";
-        display+="pet = "+this.pet.species+"{ nickname='"+this.pet.nickname+"', age="+this.pet.age+", tricklevel="+this.pet.trickLevel+", habits="+ Arrays.toString(this.pet.habits)+" }}";
+        display+="Pet = "+this.pet.species+"{ nickname='"+this.pet.nickname+"', age="+this.pet.age+", tricklevel="+this.pet.trickLevel+", habits="+ Arrays.toString(this.pet.habits)+"}}";
         return display;
     }
     public Human(){}

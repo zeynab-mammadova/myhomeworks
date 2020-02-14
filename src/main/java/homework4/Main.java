@@ -10,7 +10,7 @@ public class Main {
         pug.foul();
         System.out.println(pug);
         String[][] schedule={{"Monday","go to the IBA"},{"Tueday","do homeworks"},{"Wednesday","go to the museum"},{"Thursday","go to the IBA"},{"Friday","go to the university"},{"Saturday","go to the IBA"},{"Sunday","go to the breakfast"}};
-        Human me=new Human("Jack","Bing",2001,70,mother,father,pug,schedule);
+        Human me=new Human("Zeynab","Mammadova",2001,70,mother,father,pug,schedule);
         System.out.println(me);
         me.describePet();
         Pet golden=new Pet("dog","golden",3,77,habits);
