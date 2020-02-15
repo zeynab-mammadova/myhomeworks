@@ -1,3 +1,5 @@
+package az.company.homeworks.homework2;
+
 import java.util.*;
 public class homework2 {
     public static <string> void main(String[] args) {
