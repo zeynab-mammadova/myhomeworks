@@ -7,15 +7,15 @@ public class homework2 {
         String[][] square = new String[5][5];
         int i;
         int j;
-        for ( i = 0; i < 5; i++) {
-            for ( j = 0; j < 5; j++) {
+        for ( i = 0; i < square.length; i++) {
+            for ( j = 0; j < square.length; j++) {
                 square[i][j] = "-|";
             }
         }
         while(true) {
             System.out.println();
-            for (i = 0; i < 5; i++) {
-                for ( j = 0; j < 5; j++) {
+            for (i = 0; i < square.length; i++) {
+                for ( j = 0; j < square.length; j++) {
                     System.out.print(square[i][j] + "\t");
                 }
                 System.out.println("\t");
@@ -30,14 +30,14 @@ public class homework2 {
             System.out.println("Enter a bar for fire");
             Scanner c = new Scanner(System.in);
             int bar = c.nextInt();
-            if(line>0 && line<5 && bar>0 && bar<5){
+            if(line>0 && line<=5 && bar>0 && bar<=5){
             if(line!=resultRow && bar!=resultCol){
-                square[line][bar]="*|";
+                square[line-1][bar-1]="*|";
             }
             else{
-                square[line][bar]="x|";
-                for (i = 0; i < 5; i++) {
-                    for ( j = 0; j < 5; j++) {
+                square[line-1][bar-1]="x|";
+                for (i = 0; i < square.length; i++) {
+                    for ( j = 0; j < square.length; j++) {
                         System.out.print(square[i][j] + "\t");
                     }
                     System.out.println("\t");

@@ -9,10 +9,23 @@ public class Family {
     private Human[] children;
     private Pet pet;
 
+    public Family(Human mother, Human father,Human []children) {
+        this.mother = mother;
+        this.father = father;
+        this.children = children;
+    }
+
     public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = father;
-        children = new Human[1];
+    }
+
+    public Family(){
+
+    }
+
+    public int countFamily(){
+        return 2+children.length;
     }
 
     public Human getMother() {
@@ -47,10 +60,40 @@ public class Family {
         this.pet = pet;
     }
 
+    public void addChild(Human child){
+        if(children!=null){
+            Human [] ushaq=new Human[children.length+1];
+            for (int i=0;i<children.length;i++){
+                ushaq[i]=children[i];
+            }
+            ushaq[children.length]=child;
+            children=ushaq;
+        }
+        else {
+            Human[]ushaq=new Human[1];
+            ushaq[0]=child;
+            children=ushaq;
+        }
+}
+    public void deleteChild (int i) {
+        if (children != null) {
+            Human[] ushaq = new Human[children.length-1];
+            for (int j = 0; j < children.length; j++) {
+                if (j < i) {
+                    ushaq[j] = children[j];
+                } else if (j > i) {
+                    ushaq[j - 1] = children[j];
+                }
+            }
+            children = ushaq;
+        }
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Family)) return false;
         Family family = (Family) o;
         return Objects.equals(mother, family.mother) &&
                 Objects.equals(father, family.father) &&
@@ -71,7 +114,8 @@ public class Family {
                 "mother=" + mother +
                 ", father=" + father +
                 ", children=" + Arrays.toString(children) +
-                ", pet=" + pet +
+                ", pet= "+pet+
                 '}';
     }
+
 }

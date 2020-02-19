@@ -6,41 +6,21 @@ import java.util.Random;
 
 public class Human {
     private String name;
-    private  String surname;
-    private  int year;
-    private  int iq; // in this interval(1-100)
-    private  Pet pet;
+    private String surname;
+    private int year;
+    private int iq; // in this interval(1-100)
     private Family family;
-    private  Human mother;
-    private  Human father;
     private String[][] schedule = new String[7][2];
     Random random = new Random();
-    public Human(String name, String surname, int year, int iq, Human mother, Human father, Pet pet) {
+
+    public Human(String name, String surname, int year, int iq) {
         this.name = name;
         this.surname = surname;
         this.year = year;
         this.iq = iq;
-        this.mother = mother;
-        this.father = father;
-        this.pet = pet;
     }
 
-    public Human(String name, String surname, int year, Human mother, Human father) {
-        this.name = name;
-        this.surname = surname;
-        this.year = year;
-        this.mother = mother;
-        this.father = father;
-    }
 
-    public Human() {
-    }
-
-    public Human(String name, String surname, int year) {
-        this.name = name;
-        this.surname = surname;
-        this.year = year;
-    }
     public Family getFamily() {
         return family;
     }
@@ -73,11 +53,11 @@ public class Human {
         this.year = year;
     }
 
-    public int getIq_level() {
+    public int getIq() {
         return iq;
     }
 
-    public void setIq_level(int iq) {
+    public void setIq(int iq) {
         this.iq = iq;
     }
 
@@ -89,13 +69,14 @@ public class Human {
         this.schedule = shedule;
     }
 
-    public void greetPet(){
+    public void welcomeTheFavorite() {
         System.out.println("Hello, " + this.family.getPet().getNickname());
 
     }
-    public void describePet(){
+
+    public void describeTheFavourite() {
         System.out.print("I have " + this.family.getPet().getSpecies() + ", he is " + this.family.getPet().getAge() + " years old. ");
-        if(this.family.getPet().getTrickLevel()<50) System.out.println("He is almost not sly");
+        if (this.family.getPet().getTrickLevel() < 50) System.out.println("He is almost not sly");
         else System.out.println("He is sly");
     }
 
@@ -106,11 +87,6 @@ public class Human {
                 ", surname='" + surname + '\'' +
                 ", year=" + year +
                 ", iq=" + iq +
-                ", pet=" + pet +
-                ", mother=" + mother +
-                ", father=" + father +
-                ", schedule=" + Arrays.toString(schedule) +
-                ", random=" + random +
                 '}';
     }
 
@@ -119,7 +95,7 @@ public class Human {
             System.out.println("Hm... I will feed " + this.family.getPet().getNickname() + "");
             return true;
         } else {
-            System.out.println("I think " + this.family.getPet().getNickname()+ " is not hungry.");
+            System.out.println("I think " + this.family.getPet().getNickname() + " is not hungry.");
             return false;
         }
     }
