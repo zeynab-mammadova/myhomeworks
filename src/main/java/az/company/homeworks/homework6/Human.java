@@ -11,28 +11,13 @@ public class Human {
     private String[][] schedule=new String[7][2];
     private Family family;
 
-    public Human(String name, String surname, int year, short iq, String schedule[][], Family family) {
+    public Human(String name, String surname, int year, short iq) {
         this.name = name;
         this.surname = surname;
         this.year = year;
         this.iq = iq;
-        this.schedule = schedule;
-        this.family = family;
     }
 
-    public Human(String name, String surname, int year) {
-        this.name = name;
-        this.surname = surname;
-        this.year = year;
-    }
-
-
-    public Human(String name, String surname, int year, String schedule[][]) {
-        this.name = name;
-        this.surname = surname;
-        this.year = year;
-        this.schedule = schedule;
-    }
 
     public Human() {
     }
