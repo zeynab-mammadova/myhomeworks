@@ -7,17 +7,19 @@ public class Human {
     private String name;
     private String surname;
     private int year;
-    private short iq;
-    private String[][] schedule=new String[7][2];
+    private int iq;
+    private String[][]schedule;
     private Family family;
 
-    public Human(String name, String surname, int year, short iq) {
+    public Human(String name, String surname, int year, int iq) {
         this.name = name;
         this.surname = surname;
         this.year = year;
         this.iq = iq;
     }
-
+    public Human(String name) {
+        this.name = name;
+    }
 
     public Human() {
     }
@@ -54,20 +56,12 @@ public class Human {
         this.year = year;
     }
 
-    public short getIq() {
+    public int getIq() {
         return iq;
     }
 
     public void setIq(short iq) {
         this.iq = iq;
-    }
-
-    public String[][] getSchedule() {
-        return schedule;
-    }
-
-    public void setSchedule(String[][] schedule) {
-        this.schedule = schedule;
     }
 
     public Family getFamily() {
@@ -101,8 +95,6 @@ public class Human {
                 ", surname='" + surname + '\'' +
                 ", year=" + year +
                 ", iq=" + iq +
-                ", schedule=" + Arrays.toString(schedule) +
-                ", family=" + family +
                 '}';
     }
     @Override

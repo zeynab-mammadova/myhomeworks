@@ -20,14 +20,7 @@ package az.company.homeworks.homework6;
 
 
 
-        public Pet(Species species, String nickname, int trickLevel) {
-            this.species = species;
-            this.nickname = nickname;
-            this.trickLevel = trickLevel;
-        }
-
-
-        public Pet(Species species, String nickname, int age, short trickLevel, String[] habits) {
+        public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
             this.species = species;
             this.nickname = nickname;
             this.age = age;
@@ -36,12 +29,8 @@ package az.company.homeworks.homework6;
         }
 
         public Pet() {
-            // empty constructor
-
 
         }
-
-
 
         public void eat() {
             System.out.println("I am eating");

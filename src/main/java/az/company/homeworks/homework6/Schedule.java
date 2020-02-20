@@ -3,7 +3,7 @@ package az.company.homeworks.homework6;
 import java.util.Arrays;
 
 public class Schedule {
-    private String [][] schedule= new String[7][2];
+    private String [][] schedule;
 
     public Schedule(String[][] schedule){
         this.schedule=schedule;

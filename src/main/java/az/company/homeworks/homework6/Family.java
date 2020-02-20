@@ -23,9 +23,6 @@ public class Family {
 
     }
 
-    public int countFamily(){
-        return 2+children.length;
-    }
 
     public Human getMother() {
         return mother;
@@ -86,6 +83,9 @@ public class Family {
             }
             children = ushaq;
         }
+    }
+    public int countFamily(){
+        return 2+children.length;
     }
 
 
