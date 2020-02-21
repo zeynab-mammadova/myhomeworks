@@ -46,7 +46,7 @@ public class homework2 {
                 System.out.println(" You have won!");  break;  }
             }
             else{
-                System.out.println("Please enter the number in [0 5) interval");
+                System.out.println("Please enter the number in (0 5] interval");
             }
         }
 
