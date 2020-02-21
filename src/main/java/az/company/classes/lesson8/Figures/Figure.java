@@ -2,6 +2,6 @@ package az.company.classes.lesson8.Figures;
 
 public class Figure {
 public int Area(){
-return 1;
+return 0;
 }
 }

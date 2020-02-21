@@ -1,3 +1,5 @@
+package az.company.classes.lesson4;
+
 public class warmup4 {
 
     public static boolean isCapital(char c) {

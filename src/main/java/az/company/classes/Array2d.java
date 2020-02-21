@@ -1,3 +1,5 @@
+package az.company.classes;
+
 import java.util.Scanner;
 
 public class Array2d {

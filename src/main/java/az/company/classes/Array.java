@@ -1,3 +1,5 @@
+package az.company.classes;
+
 public class Array {
     public static void main(String[] args) {
         int MAX =20;

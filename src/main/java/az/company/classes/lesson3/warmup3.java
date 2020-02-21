@@ -1,3 +1,5 @@
+package az.company.classes.lesson3;
+
 import java.util.Scanner;
 public class warmup3 {
     public static void main(String[] args) {

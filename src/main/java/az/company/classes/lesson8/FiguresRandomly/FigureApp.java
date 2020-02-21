@@ -1,6 +1,5 @@
-package az.company.classes.lesson8.Figures;
+package az.company.classes.lesson8.FiguresRandomly;
 
-import java.awt.geom.Area;
 import java.util.ArrayList;
 
 public class FigureApp {

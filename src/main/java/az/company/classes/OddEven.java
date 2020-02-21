@@ -1,3 +1,5 @@
+package az.company.classes;
+
 public class OddEven {
     public static void main(String[] args) {
         int[] Odd = new int[20];

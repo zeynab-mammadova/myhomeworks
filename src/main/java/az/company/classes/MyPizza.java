@@ -1,3 +1,5 @@
+package az.company.classes;
+
 public class MyPizza {
     int price;
     String name;
