@@ -1,36 +1,40 @@
-package az.company.homeworks.homework6;
+package az.company.homeworks.homework8;
 
-import java.util.Arrays;
 import java.util.Objects;
+import java.util.Random;
 
 public class Human {
     private String name;
     private String surname;
     private int year;
     private int iq;
-    private String[][]schedule;
+    private Schedule schedule;
     private Family family;
-
-    public Human(String name, String surname, int year, int iq) {
+    Random random = new Random();
+    public Human(String name, String surname, int year, short iq, Schedule schedule, Family family) {
         this.name = name;
         this.surname = surname;
         this.year = year;
         this.iq = iq;
+        this.schedule = schedule;
+        this.family = family;
     }
-    public Human(String name) {
+
+    public Human(String name, String surname, int year) {
         this.name = name;
+        this.surname = surname;
+        this.year = year;
     }
 
-    public Human() {
-    }
 
-    public void welcomeTheFavorite() {
-        System.out.println("Hello, " + family.getPet().getNickname());
+    public Human(String name, String surname, int year, Schedule schedule) {
+        this.name = name;
+        this.surname = surname;
+        this.year = year;
+        this.schedule = schedule;
     }
+    public Human() {}
 
-    public void describeTheFavourite() {
-        System.out.println("I have a " + family.getPet().getSpecies() + ", he is " + family.getPet().getAge() + " years old, he is " + ((family.getPet().getTrickLevel() > 50) ? "Very sly" : "almost not sly"));
-    }
 
     public String getName() {
         return name;
@@ -63,6 +67,12 @@ public class Human {
     public void setIq(short iq) {
         this.iq = iq;
     }
+    public Schedule getSchedule() {
+        return schedule;
+    }
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
+    }
 
     public Family getFamily() {
         return family;
@@ -77,9 +87,9 @@ public class Human {
         if (this == o) return true;
         if (!(o instanceof Human)) return false;
         Human human = (Human) o;
-        return  this.getName().equals(human.getName()) &&
-                this.getSurname().equals(human.getSurname()) &&
-                this.getFamily().equals(human.getFamily());
+        return getYear() == human.getYear() &&
+                Objects.equals(getName(), human.getName()) &&
+                Objects.equals(getSurname(), human.getSurname());
     }
 
     @Override
@@ -95,6 +105,8 @@ public class Human {
                 ", surname='" + surname + '\'' +
                 ", year=" + year +
                 ", iq=" + iq +
+                ", schedule=" + schedule +
+                ", family=" + family +
                 '}';
     }
     @Override

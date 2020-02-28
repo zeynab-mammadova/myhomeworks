@@ -76,19 +76,22 @@ package az.company.homeworks.homework6;
             if (this == o) return true;
             if (!(o instanceof Pet)) return false;
             Pet pet = (Pet) o;
-            return Objects.equals(getSpecies(), pet.getSpecies()) &&
-                    Objects.equals(getNickname(), pet.getNickname());
+            return this.getSpecies() == pet.getSpecies() &&
+                    this.getNickname() == pet.getNickname()&&
+                    this.getAge() == pet.getAge() &&
+                    this.getTrickLevel() == pet.getTrickLevel() &&
+                    this.getHabits() == pet.getHabits();
         }
 
         @Override
         public int hashCode() {
 
-            return Objects.hash(getSpecies(), getNickname());
+            return Objects.hash(getSpecies(), getNickname(), getAge(), getTrickLevel());
         }
 
         @Override
         protected void finalize() throws Throwable {
-            System.out.println("Finalized in Pet class: " + this);
+            System.out.println("Finalized in Pet class: "+this);
         }
     }
 

@@ -92,18 +92,18 @@ public class Family {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof az.company.homeworks.homework5.Family)) return false;
-        az.company.homeworks.homework5.Family family = (az.company.homeworks.homework5.Family) o;
-        return Objects.equals(mother, family.getMother()) &&
-                Objects.equals(father, family.getFather()) &&
-                Arrays.equals(children, family.getChildren()) &&
-                Objects.equals(pet, family.getPet());
+        if (!(o instanceof Family)) return false;
+           Family family = (Family) o;
+        return this.getMother().equals(family.getMother()) &&
+                this.getFather().equals(family.getFather()) &&
+                Arrays.equals(this.getChildren(), family.getChildren());
+
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(mother, father, pet);
-        result = 31 * result + Arrays.hashCode(children);
+        int result = Objects.hash(getMother(), getFather());
+        result = 31 * result + Arrays.hashCode(getChildren());
         return result;
     }
 
