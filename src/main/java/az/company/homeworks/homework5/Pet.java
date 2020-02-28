@@ -78,18 +78,17 @@ public class Pet {
         if (this == o) return true;
         if(!(o instanceof Pet)) return false;
         Pet pet = (Pet) o;
-        return getAge() == pet.getAge() &&
-                getTrickLevel() == pet.getTrickLevel() &&
-                Objects.equals(getSpecies(), pet.getSpecies()) &&
-                Objects.equals(getNickname(), pet.getNickname()) &&
-                Arrays.equals(getHabits(), pet.getHabits());
+        return this.getSpecies() == pet.getSpecies() &&
+                this.getNickname() == pet.getNickname()&&
+                this.getAge() == pet.getAge() &&
+                this.getTrickLevel() == pet.getTrickLevel() &&
+                this.getHabits() == pet.getHabits();
     }
+
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(getSpecies(), getNickname(), getAge(), getTrickLevel());
-        result = 31 * result + Arrays.hashCode(getHabits());
-        return result;
+      return Objects.hash(getSpecies(), getNickname(), getAge(), getTrickLevel());
     }
 
     @Override

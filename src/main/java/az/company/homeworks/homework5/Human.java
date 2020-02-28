@@ -18,6 +18,7 @@ public class Human {
         this.surname = surname;
         this.year = year;
         this.iq = iq;
+
     }
 
 
@@ -78,6 +79,22 @@ public class Human {
         System.out.print("I have " + this.family.getPet().getSpecies() + ", he is " + this.family.getPet().getAge() + " years old. ");
         if (this.family.getPet().getTrickLevel() < 50) System.out.println("He is almost not sly");
         else System.out.println("He is sly");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Human human = (Human) o;
+        return this.getName().equals(human.getName()) &&
+                this.getSurname().equals(human.getSurname()) &&
+                this.getFamily().equals(human.getFamily());
+    }
+
+        @Override
+    public int hashCode() {
+       return  Objects.hash(name, surname, family);
+
     }
 
     @Override

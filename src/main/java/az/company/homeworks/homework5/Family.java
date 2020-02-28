@@ -95,17 +95,18 @@ public class Family {
         if (this == o) return true;
         if (!(o instanceof Family)) return false;
         Family family = (Family) o;
-        return Objects.equals(mother, family.mother) &&
-                Objects.equals(father, family.father) &&
-                Arrays.equals(children, family.children) &&
-                Objects.equals(pet, family.pet);
+        return this.getMother().equals(family.getMother()) &&
+                this.getFather().equals(family.getFather()) &&
+                Arrays.equals(this.getChildren(), family.getChildren());
+
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(mother, father, pet);
-        result = 31 * result + Arrays.hashCode(children);
+        int result = Objects.hash(getMother(), getFather());
+        result = 31 * result + Arrays.hashCode(getChildren());
         return result;
+
     }
 
     @Override
@@ -114,7 +115,6 @@ public class Family {
                 "mother=" + mother +
                 ", father=" + father +
                 ", children=" + Arrays.toString(children) +
-                ", pet= "+pet+
                 '}';
     }
 
