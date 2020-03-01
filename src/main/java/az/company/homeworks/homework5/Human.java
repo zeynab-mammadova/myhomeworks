@@ -86,9 +86,10 @@ public class Human {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Human human = (Human) o;
-        return this.getName().equals(human.getName()) &&
-                this.getSurname().equals(human.getSurname()) &&
-                this.getFamily().equals(human.getFamily());
+        return  this.getIq()==human.getIq()&&
+                this.getYear()==human.getYear()&&
+                this.getName().equals(human.getName()) &&
+                this.getSurname().equals(human.getSurname()) ;
     }
 
         @Override

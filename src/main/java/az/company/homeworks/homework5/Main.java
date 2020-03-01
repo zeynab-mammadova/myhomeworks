@@ -7,6 +7,7 @@ public class Main {
         Human John=new Human("John","Bravo",2004,88);
         Human Rose=new Human("Rose","Bravo",2006,90);
         Pet hamster=new Pet("Hamster","Yulaf",2,40,new String[]{"eating,running,sleeping"});
+        Human[] children = new Human[5];
 
         Family family=new Family();
         family.setFather(Michael);

@@ -78,8 +78,8 @@ public class Pet {
         if (this == o) return true;
         if(!(o instanceof Pet)) return false;
         Pet pet = (Pet) o;
-        return this.getSpecies() == pet.getSpecies() &&
-                this.getNickname() == pet.getNickname()&&
+        return this.getSpecies().equals(pet.getSpecies()) &&
+                this.getNickname().equals(pet.getNickname()) &&
                 this.getAge() == pet.getAge() &&
                 this.getTrickLevel() == pet.getTrickLevel() &&
                 this.getHabits() == pet.getHabits();
