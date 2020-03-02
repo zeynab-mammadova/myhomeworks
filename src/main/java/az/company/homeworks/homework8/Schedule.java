@@ -5,23 +5,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Schedule {
-   private Map<String,String> table =new HashMap<String, String>();
+    private HashMap<String, Integer> schedule= new HashMap<>();
 
-   public Schedule(Map<String,String> table){
-       this.table=table;
-   }
 
-   public Map<String,String> getTable(){
-       return table;
+
+    public HashMap<String, Integer> getSchedule() {
+        return schedule;
     }
-    public void setTable(Map<String,String> table){
-       this.table=table;
+
+    public void setSchedule(HashMap<String, Integer> schedule) {
+        this.schedule = schedule;
     }
 
     @Override
     public String toString() {
         return "Schedule{" +
-                "table=" + table +
+                "schedule=" + schedule +
                 '}';
     }
 }
+

@@ -10,39 +10,13 @@ public class RoboCat extends Pet {
         trickLevel = super.getTrickLevel();
     }
 
-    public RoboCat(Species species, String nickname, int age, int trickLevel, String[] habits) {
-        species = spec;
-        nickname = super.getNickname();
-        age = super.getAge();
-        trickLevel = super.getTrickLevel();
-        habits = super.getHabits();
-    }
-
     public RoboCat() {
         this(Species.UNKNOWN, "RoboCat", 60);
-    }
-    public Species getSpec() {
-        return spec;
-    }
-
-    public void setSpec(Species spec) {
-        this.spec = spec;
     }
 
 
     @Override
     public void respond() {
         System.out.printf("I'm %s\n",this.getNickname());
-    }
-    @Override
-    public void foul() {
-        System.out.println("Ups! I do something");
-    }
-
-    @Override
-    public String toString() {
-        return "RoboCat{" +
-                "spec=" + spec +
-                '}';
     }
 }

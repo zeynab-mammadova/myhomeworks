@@ -25,6 +25,7 @@ public class Main {
         System.out.println(family.toString());
         System.out.println("Number of family members: " + family.countFamily());
         family.deleteChild(0);
+        family.addChild(John);
         System.out.println("Number of family members after child leave family: " + family.countFamily());
         System.out.println(family.toString());
           for (int i = 0; i < 100000;i++){

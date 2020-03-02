@@ -10,26 +10,14 @@ private Species spec=Species.DOG;
         trickLevel = super.getTrickLevel();
     }
 
-    public Dog(Species species, String nickname, int age, int trickLevel, String[] habits) {
-        species = spec;
-        nickname = super.getNickname();
-        age = super.getAge();
-        trickLevel = super.getTrickLevel();
-        habits = super.getHabits();
-    }
-
     public Dog() {
         this(Species.UNKNOWN, "Dog", 60);
     }
-    public Species getSpec() {
-        return spec;
+
+    @Override
+    public void eat() {
+        super.eat();
     }
-
-    public void setSpec(Species spec) {
-        this.spec = spec;
-    }
-
-
     @Override
     public void respond() {
         System.out.printf("I'm %s\n",this.getNickname());
@@ -39,10 +27,4 @@ private Species spec=Species.DOG;
         System.out.println("Oops..");
     }
 
-    @Override
-    public String toString() {
-        return "Dog{" +
-                "spec=" + spec +
-                '}';
-    }
 }

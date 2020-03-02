@@ -1,5 +1,7 @@
 package az.company.homeworks.homework8;
- import java.util.Objects;
+
+import java.util.HashSet;
+import java.util.Objects;
 
 public abstract class Pet {
 
@@ -13,19 +15,18 @@ public abstract class Pet {
     }
 
 
-
     private String nickname;
     private int age;
     private int trickLevel;
-    private String[] habits ;
+    private HashSet<String> habits = new HashSet<String>();
 
     public Pet(String nickname, int trickLevel) {
         this.nickname = nickname;
         this.trickLevel = trickLevel;
     }
 
-    public Pet( String nickname, int age, int trickLevel, String[] habits) {
-              this.nickname = nickname;
+    public Pet(String nickname, int age, int trickLevel, HashSet<String> habits) {
+        this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
         this.habits = habits;
@@ -46,28 +47,40 @@ public abstract class Pet {
     }
 
 
-
-
-
     public String getNickname() {
         return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public int getAge() {
         return age;
     }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public int getTrickLevel() {
         return trickLevel;
     }
 
-    public String[] getHabits() {
+    public void setTrickLevel(int trickLevel) {
+        this.trickLevel = trickLevel;
+    }
+
+    public HashSet<String> getHabits() {
         return habits;
     }
 
+    public void setHabits(HashSet<String> habits) {
+        this.habits = habits;
+    }
 
     public String toString() {
-        return  "{nickname= " + getNickname() + ", age= " + getAge() + ", trickLevel= " + getTrickLevel() + ", habits= " + getHabits() + "}";
+        return "{nickname= " + getNickname() + ", age= " + getAge() + ", trickLevel= " + getTrickLevel() + ", habits= " + getHabits() + "}";
     }
 
     @Override
