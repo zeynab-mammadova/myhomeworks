@@ -1,16 +1,8 @@
 package az.company.homeworks.homework7;
 
 public class DomesticCat extends Pet {
-    private Species spec = Species.DOMESTICCAT;
-
-    public DomesticCat(Species species, String nickname, int trickLevel) {
-        species = spec;
-        nickname = super.getNickname();
-        trickLevel = super.getTrickLevel();
-    }
-
-    public DomesticCat() {
-        this(Species.UNKNOWN, "DomesticCat", 60);
+    public DomesticCat( String nickname, int age, int trickLevel, String[] habits) {
+        super( nickname, age, trickLevel, habits);
     }
 
     @Override

@@ -1,18 +1,9 @@
 package az.company.homeworks.homework7;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public abstract class Pet {
-
-    enum Species {
-        DOG,
-        DOMESTICCAT,
-        HAMSTER,
-        ROBOCAT,
-        FISH,
-        UNKNOWN
-    }
-
 
     private String nickname;
     private int age;
@@ -21,12 +12,8 @@ public abstract class Pet {
     private Species species;
 
 
-    public Pet(String nickname, int trickLevel) {
-        this.nickname = nickname;
-        this.trickLevel = trickLevel;
-    }
+    public Pet( String nickname, int age, int trickLevel, String[] habits) {
 
-    public Pet(String nickname, int age, int trickLevel, String[] habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -88,21 +75,23 @@ public abstract class Pet {
     }
 
     public String toString() {
-        return "{nickname= " + getNickname() + ", age= " + getAge() + ", trickLevel= " + getTrickLevel() + ", habits= " + getHabits() + "}";
+        return "{nickname= " + getNickname() + ", age= " + getAge() + ", trickLevel= " + getTrickLevel() + ", habits= " + Arrays.toString(getHabits()) + "}";
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Pet)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Pet pet = (Pet) o;
-        return Objects.equals(getNickname(), pet.getNickname());
+        return getAge() == pet.getAge() &&
+                getTrickLevel() == pet.getTrickLevel() &&
+                Objects.equals(getNickname(), pet.getNickname()) &&
+                getSpecies() == pet.getSpecies();
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(getNickname());
+        return Objects.hash(nickname, age, trickLevel, species);
     }
 
     @Override

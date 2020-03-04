@@ -2,16 +2,8 @@ package az.company.homeworks.homework7;
 
 public class Dog extends Pet {
 
-private Species spec=Species.DOG;
-
-    public Dog(Species species, String nickname, int trickLevel) {
-        species = spec;
-        nickname = super.getNickname();
-        trickLevel = super.getTrickLevel();
-    }
-
-    public Dog() {
-        this(Species.UNKNOWN, "Dog", 60);
+    public Dog( String nickname, int age, int trickLevel, String[] habits) {
+        super( nickname, age, trickLevel, habits);
     }
 
     @Override

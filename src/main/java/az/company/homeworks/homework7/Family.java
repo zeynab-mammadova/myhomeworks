@@ -24,13 +24,6 @@ public class Family {
 
     }
 
-    public Family(Human mother, Human father, Human[] children, Pet pet) {
-        this.mother = mother;
-        this.father = father;
-        this.children = children;
-        this.pet = pet;
-    }
-
 
     public void addChild(Human child){
         if(children!=null){
@@ -111,16 +104,14 @@ public class Family {
         if (!(o instanceof Family)) return false;
         Family family = (Family) o;
         return Objects.equals(getMother(), family.getMother()) &&
-                Objects.equals(getFather(), family.getFather()) &&
-                Arrays.equals(getChildren(), family.getChildren());
+                Objects.equals(getFather(), family.getFather());
     }
 
     @Override
     public int hashCode() {
 
-        int result = Objects.hash(getMother(), getFather());
-        result = 31 * result + Arrays.hashCode(getChildren());
-        return result;
+        return Objects.hash(getMother(), getFather());
+
     }
 
 

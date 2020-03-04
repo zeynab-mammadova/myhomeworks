@@ -1,5 +1,7 @@
 package az.company.homeworks.homework8;
 
+import java.util.HashSet;
+
 public class Dog extends Pet {
 
 private Species spec=Species.DOG;
@@ -10,7 +12,7 @@ private Species spec=Species.DOG;
         trickLevel = super.getTrickLevel();
     }
 
-    public Dog(Species species, String nickname, int age, int trickLevel, String[] habits) {
+    public Dog(Species species, String nickname, int age, int trickLevel, HashSet<String> habits) {
         species = spec;
         nickname = super.getNickname();
         age = super.getAge();

@@ -11,14 +11,7 @@ public class Human {
     private Schedule schedule;
     private Family family;
     Random random = new Random();
-    public Human(String name, String surname, int year, short iq, Schedule schedule, Family family) {
-        this.name = name;
-        this.surname = surname;
-        this.year = year;
-        this.iq = iq;
-        this.schedule = schedule;
-        this.family = family;
-    }
+
 
     public Human(String name, String surname, int year) {
         this.name = name;
@@ -27,12 +20,6 @@ public class Human {
     }
 
 
-    public Human(String name, String surname, int year, Schedule schedule) {
-        this.name = name;
-        this.surname = surname;
-        this.year = year;
-        this.schedule = schedule;
-    }
     public Human() {}
 
     public void welcomeTheFavorite() {

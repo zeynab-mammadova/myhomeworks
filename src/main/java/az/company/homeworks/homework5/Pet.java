@@ -81,8 +81,7 @@ public class Pet {
         return this.getSpecies().equals(pet.getSpecies()) &&
                 this.getNickname().equals(pet.getNickname()) &&
                 this.getAge() == pet.getAge() &&
-                this.getTrickLevel() == pet.getTrickLevel() &&
-                this.getHabits() == pet.getHabits();
+                this.getTrickLevel() == pet.getTrickLevel() ;
     }
 
 
