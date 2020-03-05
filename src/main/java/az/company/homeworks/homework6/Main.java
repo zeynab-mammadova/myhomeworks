@@ -22,15 +22,16 @@ public class Main {
         family.addChild(John);
         family.addChild(Rose);
         family.setPet(hamster);
+          System.out.println("Number of family members: " + family.countFamily());
         System.out.println(family.toString());
-        System.out.println("Number of family members: " + family.countFamily());
         family.deleteChild(0);
-        family.addChild(John);
         System.out.println("Number of family members after child leave family: " + family.countFamily());
         System.out.println(family.toString());
+
           for (int i = 0; i < 100000;i++){
                 new Human();
-                Runtime.getRuntime().runFinalization();
+                System.gc();
+
           }
     }
 }
