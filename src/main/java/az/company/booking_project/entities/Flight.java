@@ -10,16 +10,18 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Flight implements Serializable {
     private int id;
-    private ArrivalCity from;
-    private DepartureCity to;
+    private Airline airline;
+    private DepartureCity from;
+    private ArrivalCity to;
     private LocalTime arrival_time;
     private int empty_seats;
     private LocalDate arrival_date;
     private static int count = 0;
     static List<Flight> flights = new ArrayList<>();
 
-    public Flight(int id, ArrivalCity from, DepartureCity to, LocalTime arrival_time, int empty_seats, LocalDate arrival_date) {
+    public Flight(int id, Airline airline, DepartureCity from,ArrivalCity to, LocalTime arrival_time, int empty_seats, LocalDate arrival_date) {
         this.id = id;
+        this.airline=airline;
         this.from = from;
         this.to = to;
         this.arrival_time = arrival_time;
@@ -32,8 +34,9 @@ public class Flight implements Serializable {
         for (int i = 0; i < 50; i++) {
             Flight flight = new Flight(
                     ++count,
-                    ArrivalCity.getRandomCity(),
+                    Airline.getRandomCode(),
                     DepartureCity.KIEV,
+                    ArrivalCity.getRandomCity(),
                     LocalTime.now().plusHours((long) (Math.random()*10)).plusMinutes((long) (Math.random()*20)).truncatedTo(ChronoUnit.SECONDS),
                     (int) (Math.random() * 50),
                     LocalDate.ofEpochDay(ThreadLocalRandom
@@ -59,7 +62,8 @@ public class Flight implements Serializable {
 
 
 
-    public Flight(ArrivalCity from, LocalDate arrival_date) {
+    public Flight(Airline airline,ArrivalCity from, LocalDate arrival_date) {
+        this.airline=Airline.getRandomCode();
         this.from = ArrivalCity.getRandomCity();
         this.arrival_date = arrival_date;
     }

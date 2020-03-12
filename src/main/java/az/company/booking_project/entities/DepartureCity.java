@@ -1,5 +1,7 @@
 package az.company.booking_project.entities;
 
+import java.util.Random;
+
 public enum DepartureCity {
     KIEV("KBP");
 
@@ -12,4 +14,6 @@ public enum DepartureCity {
     public String getCode() {
         return code;
     }
+
+
 }
