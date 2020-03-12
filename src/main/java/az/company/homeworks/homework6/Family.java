@@ -11,18 +11,11 @@ public class Family {
     public Family(Human mother,Human father, Human[]children) {
         this.mother = mother;
         this.father = father;
-        this.children = children;
+        this.children =children;
     }
-
-    public Family(Human mother,Human father) {
-        this.mother = mother;
-        this.father = father;
-    }
-
     public Family(){
 
     }
-
 
     public Human getMother() {
         return mother;
@@ -71,19 +64,39 @@ public class Family {
             children=ushaq;
         }
     }
-    public void deleteChild (int i) {
-        if (children != null) {
-                 Human[] ushaq = new Human[children.length-1];
-            for (int j = 0; j < children.length; j++) {
-                if (j < i) {
-                    ushaq[j] = children[j];
-                } else if (j > i) {
+    public boolean deleteChild(int i) {
+        if(i<0) return false;
+        if (children.length != 0) {
+            Human[] ushaq = new Human[children.length - 1];
+            if (i < children.length) {
+                for (int n = 0; n < i; n++) {
+                    ushaq[n] = children[n];
+                }
+                for (int j = i + 1; j < children.length; j++) {
                     ushaq[j - 1] = children[j];
                 }
+                this.children = ushaq;
+                return true;
+            } else {
+                System.out.println("No child at this index");
+                return false;
             }
-            children = ushaq;
+        } else {
+            return false;
         }
+
     }
+
+    public boolean deleteChild(Human child) {
+        for (int j = 0; j < children.length; j++) {
+            if (children[j].equals(child)) {
+                deleteChild(j);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public int countFamily(){
         return 2+children.length;
     }
