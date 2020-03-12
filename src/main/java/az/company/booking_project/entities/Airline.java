@@ -26,5 +26,10 @@ public enum Airline {
         Random rand = new Random();
         return values()[rand.nextInt(values().length)].code;
     }
+    public static Airline getRandomAirline() {
+        Random rand = new Random();
+        return values()[rand.nextInt(values().length)];
+    }
+
 }
 

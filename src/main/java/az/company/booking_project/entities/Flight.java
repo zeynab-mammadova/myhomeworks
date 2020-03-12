@@ -3,14 +3,18 @@ package az.company.booking_project.entities;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Flight implements Serializable {
     private int id;
     private Airline airline;
+    private String flightNo;
     private DepartureCity from;
     private ArrivalCity to;
     private LocalTime arrival_time;
@@ -19,9 +23,10 @@ public class Flight implements Serializable {
     private static int count = 0;
     static List<Flight> flights = new ArrayList<>();
 
-    public Flight(int id, Airline airline, DepartureCity from,ArrivalCity to, LocalTime arrival_time, int empty_seats, LocalDate arrival_date) {
+    public Flight(int id,Airline airline,String flightNo, DepartureCity from, ArrivalCity to, LocalTime arrival_time, int empty_seats, LocalDate arrival_date) {
         this.id = id;
         this.airline=airline;
+        this.flightNo=flightNo;
         this.from = from;
         this.to = to;
         this.arrival_time = arrival_time;
@@ -34,13 +39,14 @@ public class Flight implements Serializable {
         for (int i = 0; i < 50; i++) {
             Flight flight = new Flight(
                     ++count,
-                    Airline.getRandomCode(),
+                    Airline.getRandomAirline(),
+                    Airline.getRandomCode()+(int)(Math.random()*100),
                     DepartureCity.KIEV,
                     ArrivalCity.getRandomCity(),
                     LocalTime.now().plusHours((long) (Math.random()*10)).plusMinutes((long) (Math.random()*20)).truncatedTo(ChronoUnit.SECONDS),
-                    (int) (Math.random() * 50),
+                    (int) (Math.random() * 100),
                     LocalDate.ofEpochDay(ThreadLocalRandom
-                                    .current().nextInt(-365*100, 365*100)));
+                                    .current().nextInt(0, 365*5)));
             flights.add(flight);
         }
         writeToFile(flights);
@@ -62,9 +68,8 @@ public class Flight implements Serializable {
 
 
 
-    public Flight(Airline airline,ArrivalCity from, LocalDate arrival_date) {
-        this.airline=Airline.getRandomCode();
-        this.from = ArrivalCity.getRandomCity();
+    public Flight(ArrivalCity to, LocalDate arrival_date) {
+        this.to = ArrivalCity.getRandomCity();
         this.arrival_date = arrival_date;
     }
 
@@ -82,7 +87,20 @@ public class Flight implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("|ID|%-4d|ARRIVAL CITY|     %-12s  (%-4s) |DEPARTURE CITY|  %-12s  (%-4s)|ON DAY| %-10s  at:%-10s |EMPTY SEATS|  %d seats", id, from.name(), from.getCode(), to.name(), to.getCode(), arrival_date.toString(), arrival_time.toString(), empty_seats);
-    }
+        StringBuilder sb = new StringBuilder();
+        Formatter fmt = new Formatter(sb);
 
+        return fmt.format(
+                "%s %-3s %s %-5s %s %-20s %s %-12s %s %-15s %s %-12s %s %-15s %s %-3s %s",
+                "|", id,
+                "|", flightNo,
+                "|", airline,
+                "|", from,
+                "|", to,
+                "|", arrival_date.toString(),
+                "|", arrival_time.toString(),
+                "|", empty_seats,
+                "|"
+        ).toString();
+    }
 }
