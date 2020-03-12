@@ -78,7 +78,7 @@ public class Flight implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("|ID|%-4d|ARRIVAL CITY|     %-12s  (%-4s) |DEPARTURE CITY|  2%-12s  (%-4s)|ON DAY| %-10s  at:%-10s |EMPTY SEATS|  %d seats", id, from.name(), from.getCode(), to.name(), to.getCode(), arrival_date.toString(), arrival_time.toString(), empty_seats);
+        return String.format("|ID|%-4d|ARRIVAL CITY|     %-12s  (%-4s) |DEPARTURE CITY|  %-12s  (%-4s)|ON DAY| %-10s  at:%-10s |EMPTY SEATS|  %d seats", id, from.name(), from.getCode(), to.name(), to.getCode(), arrival_date.toString(), arrival_time.toString(), empty_seats);
     }
 
 }

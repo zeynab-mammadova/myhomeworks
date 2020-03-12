@@ -72,13 +72,13 @@ private DisplayMenu displayMenu =new DisplayMenu();
                         flightController.getById(id);
                         break;
                     case 3:
-                        boolean flag2 = true;
+                        boolean command2 = true;
                         int tickets = 0;
                         try {
                             System.out.println("Arrival city: ");
                             String city = scanner.next().toUpperCase();
 
-                            System.out.println("Date (YYYY/MM/DD):");
+                            System.out.println("Date (YYYY-MM-DD):");
                             LocalDate date = LocalDate.parse(scanner.next());
 
                             System.out.println("Number of tickets: ");
@@ -86,13 +86,13 @@ private DisplayMenu displayMenu =new DisplayMenu();
                             flightController.search(new Flight(ArrivalCity.valueOf(city), date));
                         } catch (InputMismatchException im) {
                             System.out.println("Smthn go wrong");
-                            flag2 = false;
+                            command2 = false;
                         } catch (Exception ex) {
                             System.out.println("Date format is not true!");
-                            flag2 = false;
+                            command2 = false;
                         }
 
-                        while (flag2) {
+                        while (command2) {
                             displayMenu.book();
                             int press = scanner.nextInt();
                             switch (press) {
@@ -100,7 +100,7 @@ private DisplayMenu displayMenu =new DisplayMenu();
                                     bookingController.makeBooking(tickets);
                                     break;
                                 case 2:
-                                    flag2 = false;
+                                    command2 = false;
                                     break;
                                 default:
                                     System.out.println("Invalid option!");
