@@ -34,7 +34,7 @@ public class Database implements Serializable {
     }
     public List<Booking> readFromFileMyBookings(){
         try{
-            File file = new File("booking.txt");
+            File file = new File("bookings.txt");
             FileInputStream fis = new FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(fis);
             bookingList= (List<Booking>) ois.readObject ();

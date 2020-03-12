@@ -109,12 +109,12 @@ private DisplayMenu displayMenu =new DisplayMenu();
                         }
                         break;
                     case 4:
+                        bookingController.showMyBookings();
+                        break;
+                    case 5:
                         System.out.println("Booking ID: ");
                         int cancelID = scanner.nextInt();
                         bookingController.cancelBooking(cancelID);
-                        break;
-                    case 5:
-                        bookingController.showMyBookings();
                         break;
                     case 6:
                         command1 = false;
