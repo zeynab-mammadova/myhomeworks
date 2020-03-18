@@ -1,70 +1,60 @@
-package homework6;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import az.company.homeworks.homework6.Family;
-import az.company.homeworks.homework6.Human;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-public class FamilyTest {
-    Family family;
-    Human[] children;
-    Human John;
-    Human Rose;
-    Human testChild;
-
-    @BeforeEach
-    public void init() {
-        family = new Family(new Human("Laura", "Karoline", 1975, 93), new Human("Michael", "Karoline", 1975, 90), new Human[]{Rose, John});
-        John = new Human("John", "Bravo", 2004, 88);
-        Rose = new Human("Rose", "Bravo", 2006, 90);
-        family.setChildren(children);
-        testChild = new Human("Test", "Testt", 2000, 100);
-
-    }
-
-    @Test
-    public void deleteChildWithIndex() {
-        assertTrue(family.deleteChild(1));
-    }
-
-    @Test
-    public void deleteChildWithWrongIndex(){
-        assertFalse(family.deleteChild(-1));
-
-    }
-
-    @Test
-    public void  deleteChildWithObject(){
-        assertTrue(family.deleteChild(Rose));
-    }
-
-    @Test
-    public void  deleteChildWithWrongObject(){
-        assertFalse(family.deleteChild(testChild));
-    }
-
-
-    @Test
-    public void addChild() {
-        family.addChild(John);
-        boolean actual = false;
-        for (int i = 0; i < family.getChildren().length; i++) {
-            if (family.getChildren()[i] == John) {
-                actual = true;
-            }
-        }
-        boolean expected = true;
-        assertEquals(expected, actual);
-    }
-
-
-    @Test
-    public void countFamily() {
-        int expected = 2 + family.getChildren().length;
-        assertEquals(expected, family.countFamily());
-    }
-
-
-}
+//package homework6;
+//
+//import static org.junit.jupiter.api.Assertions.*;
+//
+//import az.company.homeworks.homework6.Family;
+//import az.company.homeworks.homework6.Human;
+//import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.Test;
+//
+//public class FamilyTest {
+//    private Family family;
+//    private Human child1 = new Human("John","Miller",2013);
+//    private Human child2=new Human("Jack","Miller",2015);
+//    private Human[] children1=new Human[3];
+//
+//    @BeforeEach
+//    public void BeforeEach(){
+//        this.family=new Family();
+//        Human[] children=new Human[3];
+//        family.setChildren(children);
+//        family.addChild(child1);
+//        family.addChild(child2);
+//    }
+//    @Test
+//    public void testDeleteChild(){
+//        family.deleteChild(child1);
+//        children1[0]=child2;
+//        assertArrayEquals(children1,family.getChildren());
+//    }
+//    @Test
+//    public void testDeleteChildByIndex(){
+//        family.deleteChild(0);
+//        children1[0]=child2;
+//        assertArrayEquals(children1,family.getChildren());
+//    }
+//    @Test
+//    public void testAddChild(){
+//        children1[0]=child1;
+//        children1[1]=child2;
+//        assertArrayEquals(children1,family.getChildren());
+//    }
+//    @Test
+//    public void testCountFamily(){
+//        assertEquals(5,family.countFamily());
+//    }
+//    @Test
+//    public void testToString(){
+//        String expected = "Family{" + "mother=null"  + ", father=null" + ", children=" + Arrays.toString(family.getChildren()) + ", pet=null"  + '}';
+//        assertEquals(expected, family.toString());
+//    }
+//    @Test
+//    public  void testForEquals(){
+//        String[] habits = {"eat", "drink", "sleep"};
+//        Pet dog1 = new Pet(PetType.DOG, "Rock", 5, 75, habits);
+//        Pet dog2 = new Pet(PetType.DOG, "Lucky", 5, 75, habits);
+//        assertTrue(dog1.equals(dog2));
+//    }
+//
+//
+//}

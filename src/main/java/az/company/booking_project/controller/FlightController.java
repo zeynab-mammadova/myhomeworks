@@ -25,10 +25,13 @@ public class FlightController {
     public void search(Flight flight) throws IOException, ClassNotFoundException {
         try {
             Flight search = flightService.search(flight);
-            System.out.println(search);
+            System.out.println(search.toString());
         } catch (Exception e) {
-            System.out.println("This Flight hasn't fount");
+            System.out.println("This Flight hasn't found");
         }
 
     }
+//public List<String> filteredFlights(ArrivalCity to, LocalDateTime departure_time) throws IOException, ClassNotFoundException {
+//    return flightService.filteredFlights(to, departure_time);
+//}
 }

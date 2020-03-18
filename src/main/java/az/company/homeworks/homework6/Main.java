@@ -1,7 +1,5 @@
 package az.company.homeworks.homework6;
 
-import java.awt.event.KeyAdapter;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -25,6 +23,7 @@ public class Main {
         System.out.println("Number of family members: " + family.countFamily());
         System.out.println(family.toString());
         family.deleteChild(0);
+        family.deleteChild(Rose);
         System.out.println("Number of family members after child leave family: " + family.countFamily());
         System.out.println(family.toString());
 

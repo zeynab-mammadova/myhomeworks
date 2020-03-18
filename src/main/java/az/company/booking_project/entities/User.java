@@ -7,11 +7,17 @@ import java.util.Objects;
 public class User implements Serializable {
     private String username;
     private String password;
+    private int id;
+    int counter=0;
     private List<Booking> bookings;
 
     public User(String username, String password) {
+       this.id=counter++;
         this.username=username;
         this.password=password;
+    }
+    public String getPassword() {
+        return password;
     }
 
     @Override
@@ -30,6 +36,6 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("User username=%s, password=%s, bookings=%s", username, password, bookings);
+        return String.format("User username=%s, password=%s", username, password);
     }
 }

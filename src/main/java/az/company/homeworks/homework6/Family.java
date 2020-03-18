@@ -7,15 +7,57 @@ public class Family {
     private Human father;
     private Human[] children;
     private Pet pet;
+    int counter=0;
 
-    public Family(Human mother,Human father, Human[]children) {
+    public Family(Human mother,Human father, Human[]children,Pet pet) {
         this.mother = mother;
         this.father = father;
         this.children =children;
+        this.pet=pet;
     }
     public Family(){
 
     }
+    public void addChild(Human child) {
+        if(this.children!=null) {
+            this.children[counter] = child;
+            counter++;
+        }
+    }
+
+    public boolean deleteChild(Human child) {
+        boolean flag=false;
+        for (int i = 0; i < children.length; i++) {
+            Human childIndex = children[i];
+            if (childIndex.equals(child)) {
+                for(int n = i; n < children.length - 1; n++){
+                    children[n] = children[n+1];
+                    flag=true;
+                }counter--;
+                break;
+
+            }
+        }return flag;
+    }
+
+    public boolean deleteChild(int index) {
+        boolean flag = false;
+        for (int i = 0; i < children.length; i++) {
+            if (index == i) {
+                for(int n = i; n < children.length - 1; n++){
+                    children[n] = children[n+1];
+                    flag=true;
+                }counter--;
+                break;
+            }
+        }
+        return flag;
+    }
+
+    public int countFamily() {
+        return 2 + children.length;
+    }
+
 
     public Human getMother() {
         return mother;
@@ -48,59 +90,6 @@ public class Family {
     public void setPet(Pet pet) {
         this.pet = pet;
     }
-
-    public void addChild(Human child){
-        if(children!=null){
-           Human[] ushaq=new Human[children.length+1];
-            for (int i=0;i<children.length;i++){
-                ushaq[i]=children[i];
-            }
-            ushaq[children.length]=child;
-            children=ushaq;
-        }
-        else {
-          Human[]ushaq=new Human[1];
-            ushaq[0]=child;
-            children=ushaq;
-        }
-    }
-    public boolean deleteChild(int i) {
-        if(i<0) return false;
-        if (children.length != 0) {
-            Human[] ushaq = new Human[children.length - 1];
-            if (i < children.length) {
-                for (int n = 0; n < i; n++) {
-                    ushaq[n] = children[n];
-                }
-                for (int j = i + 1; j < children.length; j++) {
-                    ushaq[j - 1] = children[j];
-                }
-                this.children = ushaq;
-                return true;
-            } else {
-                System.out.println("No child at this index");
-                return false;
-            }
-        } else {
-            return false;
-        }
-
-    }
-
-    public boolean deleteChild(Human child) {
-        for (int j = 0; j < children.length; j++) {
-            if (children[j].equals(child)) {
-                deleteChild(j);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public int countFamily(){
-        return 2+children.length;
-    }
-
 
     @Override
     public boolean equals(Object o) {

@@ -10,9 +10,18 @@ import java.util.List;
 public class FlightService {
     private FlightDao flightDao = new FlightDao();
 
-    public  List<Flight> getAll() throws IOException, ClassNotFoundException {
+    public List<Flight> getAll() throws IOException, ClassNotFoundException {
         return flightDao.getAll();
     }
+
+//    public List<String> filteredFlights(ArrivalCity to, LocalDateTime departure_time) throws IOException, ClassNotFoundException {
+//        return flightDao.getAll().stream().filter(
+//                f -> to.equals(f.getTo()) &&
+//                       departure_time.equals(f.getDate())
+//        )
+//                .map(Flight::toString).collect(Collectors.toList());
+//
+//    }
 
     public Flight getById(int id) throws IOException, ClassNotFoundException {
         return flightDao.getById(id)

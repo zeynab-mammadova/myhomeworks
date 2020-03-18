@@ -10,7 +10,9 @@ import az.company.booking_project.entities.User;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Switcher {
@@ -35,6 +37,7 @@ private DisplayMenu displayMenu =new DisplayMenu();
                         System.out.println("Password:");
                         String password = scanner.next();
                         userController.getUser(new User(username, password));
+                        System.out.println("Login successfully.");
                         command1=true;
                     }
                     catch (InputMismatchException e){
@@ -47,9 +50,13 @@ private DisplayMenu displayMenu =new DisplayMenu();
                 case 2:
                     System.out.println("Username:");
                     String usernamereg = scanner.next();
-                    System.out.println("Password:");
-                    String passwordreg = scanner.next();
-                    userController.creatNewUser(new User(usernamereg,passwordreg));break;
+                    Optional<String> passwordreg = Optional.empty();
+                    while((!passwordreg.isPresent()) || !Validator.checkPassword(passwordreg.get())){
+                        System.out.println("Please, enter your password: (Password must consist of capital,small letters and numbers between [0:9] and symbols) ");
+                        passwordreg =Optional.of(scanner.next());
+                    }
+                    userController.creatNewUser(new User(usernamereg,passwordreg.get()));
+                    System.out.println("New account created successfully! ");break;
                 case 3:command=false;break;
                 default:
                     System.out.println("Invalid option!");
@@ -64,6 +71,7 @@ private DisplayMenu displayMenu =new DisplayMenu();
                 switch (menuItem) {
 
                     case 1:
+                        System.out.println("<<All possible flights>>");
                         flightController.getAll();
                         break;
                     case 2:
@@ -75,19 +83,19 @@ private DisplayMenu displayMenu =new DisplayMenu();
                         boolean command2 = true;
                         int tickets = 0;
                         try {
-                            System.out.println("Arrival city: ");
+                            System.out.println("Arrival city:");
                             String city = scanner.next().toUpperCase();
-
-                            System.out.println("Date (YYYY-MM-DD):");
-                            LocalDate date = LocalDate.parse(scanner.next());
-
-                            System.out.println("Number of tickets: ");
+                            System.out.println("Date (mm/dd/yyyy):");
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+                            String date= scanner.next();
+                            System.out.println("Number of tickets:");
                             tickets = scanner.nextInt();
-                            flightController.search(new Flight(ArrivalCity.valueOf(city), date));
+                            flightController.search(new Flight(ArrivalCity.valueOf(city), LocalDate.parse(date, formatter).atStartOfDay()));
                         } catch (InputMismatchException im) {
                             System.out.println("Smthn go wrong");
                             command2 = false;
-                        } catch (Exception ex) {
+                        }
+                        catch (Exception ex) {
                             System.out.println("Date format is not true!");
                             command2 = false;
                         }
@@ -98,6 +106,7 @@ private DisplayMenu displayMenu =new DisplayMenu();
                             switch (press) {
                                 case 1:
                                     bookingController.makeBooking(tickets);
+                                    System.out.println("Data were saved!");
                                     break;
                                 case 2:
                                     command2 = false;
@@ -109,12 +118,14 @@ private DisplayMenu displayMenu =new DisplayMenu();
                         }
                         break;
                     case 4:
+                        System.out.println("Bookings: ");
                         bookingController.showMyBookings();
                         break;
                     case 5:
                         System.out.println("Booking ID: ");
                         int cancelID = scanner.nextInt();
                         bookingController.cancelBooking(cancelID);
+                        System.out.println("Booking was deleted...");
                         break;
                     case 6:
                         command1 = false;
