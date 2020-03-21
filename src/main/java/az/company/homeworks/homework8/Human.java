@@ -1,17 +1,17 @@
 package az.company.homeworks.homework8;
 
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 public class Human {
     private String name;
     private String surname;
     private int year;
     private int iq;
-    private Schedule schedule;
+    private Map<String, ArrayList<String>> schedule = new HashMap<>();
     private Family family;
+    private Pet pet;
     Random random = new Random();
-    public Human(String name, String surname, int year, short iq, Schedule schedule, Family family) {
+    public Human(String name, String surname, int year, int iq,  Map<String, ArrayList<String>> schedule, Family family) {
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -20,14 +20,15 @@ public class Human {
         this.family = family;
     }
 
-    public Human(String name, String surname, int year) {
+    public Human(String name, String surname, int year,int iq) {
         this.name = name;
         this.surname = surname;
         this.year = year;
+        this.iq=iq;
     }
 
 
-    public Human(String name, String surname, int year, Schedule schedule) {
+    public Human(String name, String surname, int year, Map<String, ArrayList<String>> schedule) {
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -35,6 +36,23 @@ public class Human {
     }
     public Human() {}
 
+    public void welcomeTheFavorite() {
+        System.out.println("Hello, " + pet.getNickname());
+    }
+
+    public void describeTheFavourite() {
+        System.out.println("I have a " + family.getPet() + ", he is " + pet.getAge() + " years old, he is " + ((pet.getTrickLevel() > 50) ? "Very sly" : "almost not sly"));
+    }
+
+    public boolean feedPet(boolean feedTime) {
+        if (feedTime || random.nextInt() < pet.getTrickLevel()) {
+            System.out.println("Hm... I will feed " + pet.getNickname() + "");
+            return true;
+        } else {
+            System.out.println("I think " + pet.getNickname() + " is not hungry.");
+            return false;
+        }
+    }
 
     public String getName() {
         return name;
@@ -67,10 +85,10 @@ public class Human {
     public void setIq(short iq) {
         this.iq = iq;
     }
-    public Schedule getSchedule() {
+    public  Map<String, ArrayList<String>> getSchedule() {
         return schedule;
     }
-    public void setSchedule(Schedule schedule) {
+    public void setSchedule( Map<String, ArrayList<String>> schedule) {
         this.schedule = schedule;
     }
 
@@ -105,8 +123,6 @@ public class Human {
                 ", surname='" + surname + '\'' +
                 ", year=" + year +
                 ", iq=" + iq +
-                ", schedule=" + schedule +
-                ", family=" + family +
                 '}';
     }
     @Override

@@ -31,26 +31,30 @@ public class Family {
     }
 
 
-    public void addChild (Human child) {
-        children.add(child);
+    public void addChild(Human child) {
+        this.children.add(child);
+        child.setFamily(this);
     }
 
-    public void deleteChild (int i) {
-        children.remove(i);
+    public boolean deleteChild(Human child) {
+        if (children.indexOf(child) == -1) {
+            return false;
+        }
+        int index = children.indexOf(child);
+        Human human = children.remove(index);
+        return true;
     }
-    public int countFamily (Family family) {
-        int count=0;
-        if(family.father != null) {
-            count++;
-        }
-        if(family.mother != null) {
-            count++;
-        }
-        if(family.children != null) {
-            count += children.size();
-        }
-        return count;
+
+    public Human deleteChild(int index) throws IndexOutOfBoundsException {
+        Human child = children.remove(index);
+        return child;
     }
+
+
+    public int countFamily() {
+        return children.size() + 2;
+    }
+
 
     public Human getMother() {
         return mother;
@@ -88,8 +92,8 @@ public class Family {
         return "Family{" +
                 "mother=" + mother +
                 ", father=" + father +
-                ", children=" + children +
                 ", pet=" + pet +
+                ", children=" + children +
                 '}';
     }
 

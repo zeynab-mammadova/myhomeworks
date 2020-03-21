@@ -4,17 +4,7 @@ import java.util.HashSet;
 import java.util.Objects;
 
 public abstract class Pet {
-
-    enum Species {
-        DOG,
-        DOMESTICCAT,
-        HAMSTER,
-        ROBOCAT,
-        FISH,
-        UNKNOWN
-    }
-
-
+    private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
@@ -86,15 +76,17 @@ public abstract class Pet {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Pet)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Pet pet = (Pet) o;
-        return Objects.equals(getNickname(), pet.getNickname());
+        return age == pet.age &&
+                trickLevel == pet.trickLevel &&
+                species.equals(pet.species) &&
+                nickname.equals(pet.nickname);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(getNickname());
+        return Objects.hash(species, nickname, age, trickLevel);
     }
 
     @Override

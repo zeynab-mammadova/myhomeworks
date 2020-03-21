@@ -1,6 +1,7 @@
 package az.company.homeworks.homework8;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class RoboCat extends Pet {
 
@@ -12,7 +13,7 @@ public class RoboCat extends Pet {
         trickLevel = super.getTrickLevel();
     }
 
-    public RoboCat(Species species, String nickname, int age, int trickLevel, HashSet<String> habits) {
+    public RoboCat(Species species, String nickname, int age, int trickLevel, Set<String> habits) {
         species = spec;
         nickname = super.getNickname();
         age = super.getAge();
@@ -36,10 +37,7 @@ public class RoboCat extends Pet {
     public void respond() {
         System.out.printf("I'm %s\n",this.getNickname());
     }
-    @Override
-    public void foul() {
-        System.out.println("Ups! I do something");
-    }
+
 
     @Override
     public String toString() {

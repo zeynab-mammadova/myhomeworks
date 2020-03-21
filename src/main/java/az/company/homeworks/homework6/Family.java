@@ -18,8 +18,8 @@ public class Family {
     public Family(){
 
     }
-    public void addChild(Human child) {
-        if(this.children!=null) {
+    public void addChild(Human child)  {
+        if (children != null) {
             this.children[counter] = child;
             counter++;
         }
@@ -104,9 +104,8 @@ public class Family {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(getMother(), getFather());
-        result = 31 * result + Arrays.hashCode(getChildren());
-        return result;
+       return Objects.hash(getMother(), getFather(),getChildren());
+
     }
 
     @Override

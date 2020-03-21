@@ -23,8 +23,10 @@ public class Main {
         System.out.println("Number of family members: " + family.countFamily());
         System.out.println(family.toString());
         family.deleteChild(0);
+        System.out.println("Number of family members after 1st child leave family: " + family.countFamily());
+        System.out.println(family.toString());
         family.deleteChild(Rose);
-        System.out.println("Number of family members after child leave family: " + family.countFamily());
+        System.out.println("Number of family members after 2nd child leave family: " + family.countFamily());
         System.out.println(family.toString());
 
         for (int i = 0; i < 100000; i++) {

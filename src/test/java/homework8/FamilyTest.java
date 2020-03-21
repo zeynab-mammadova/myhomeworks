@@ -6,45 +6,51 @@ import az.company.homeworks.homework8.Human;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class FamilyTest {
-    @Test
-    public void addChild() {
-        Family family = new Family();
-        Human John = new Human("John", "Bravo", 2004);
-        family.addChild(John);
-        boolean actual = false;
-        if (family.getChildren().contains(John)) {
-            actual = true;
-        }
-        boolean expected = true;
-        assertEquals(expected, actual);
-    }
+    private Family family;
+    private Human child1=new Human("John","Karoline",2016,99);
+    private Human child2=new Human("Rose","Karoline",2019,98);
+    private List<Human> children = new ArrayList<>();
 
+    @BeforeEach
+    public void BeforeEach(){
+        this.family=new Family();
+        children.add(child1);
+        children.add(child2);
+        family.setChildren(children);
+    }
     @Test
-    public void deleteChild() {
-        Family family = new Family();
-        Human John = new Human("John", "Bravo", 2004);
-        family.addChild(John);
+    public void testAddChild(){
+        assertEquals(2, children.size());
+    }
+    @Test
+    public void testDeleteChildWithName(){
+        family.deleteChild(child1);
+        assertEquals(1, children.size());
+    }
+    @Test
+    public void testDeleteChildWithIndex(){
         family.deleteChild(0);
-        boolean actual = true;
-        if (family.getChildren().contains(John)) {
-            actual = false;
-        }
-        boolean expected = true;
-        assertEquals(expected, actual);
+        assertEquals(1,children.size());
+    }
+    @Test
+    public void testCountFamily(){
+        assertEquals(4,family.countFamily());
+    }
+    @Test
+    public void testToString(){
+        String expected="Family{" +
+                "mother=null"  +
+                ", father=null" +
+                ", pet=[]" +
+                ", children=" + children +
+                '}';
+        assertEquals(expected,family.toString());
     }
 
-    @Test
-    public void countFamily() {
-        Family family = new Family();
-        Human Michael = new Human("Michael", "Karoline", 1975);
-        Human Laura = new Human("Laura", "Karoline", 1975);
-        Human John = new Human("John", "Bravo", 2004);
-        family.setFather(Michael);
-        family.setMother(Laura);
-        family.addChild(John);
-        int actual = family.countFamily(family);
-        int expected = 3;
-        assertEquals(expected, actual);
-    }
+
 }
