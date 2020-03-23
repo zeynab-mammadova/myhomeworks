@@ -74,9 +74,9 @@ public class Main {
         System.out.printf("There are %d families with 3 members\n", count);
 
 
-        Family family = controller.getFamilyById(1);
+        Family family = controller.getFamilyById(0);
         System.out.println("Family at index 1 will be deleted: " + family.toString());
-        controller.deleteFamilyByIndex(1);
+        controller.deleteFamilyByIndex(0);
 
         controller.displayAllFamilies();
 
