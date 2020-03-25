@@ -22,7 +22,7 @@ public class Human {
         if((family != null)) family.addChild(this);
     }
 
-    public Human(String name, String surname, long birthDate, Pet pet, Family family, Map<String, ArrayList<String>> schedule) {
+    public Human(String name, String surname,  long birthDate, Pet pet, Family family, Map<String, ArrayList<String>> schedule) {
         this(name, surname, birthDate, family);
         this.pet = pet;
         this.schedule = schedule;
@@ -58,44 +58,36 @@ public class Human {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getSurname() {
         return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     public long getYear() {
         return birthDate;
     }
 
-    public void setYear(long birthDate) {
-        this.birthDate = birthDate;
-    }
-
     public int getIq() {
         return iq;
     }
 
-    public void setIq(short iq) {
-        this.iq = iq;
+    public Pet getPet() {
+        return pet;
     }
 
-    public Map<String, ArrayList<String>> getSchedule() {
-        return schedule;
+    public void setYear(long birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
+    }
+
+    public void setIq() {
+        this.iq = iq;
     }
 
     public void setSchedule(Map<String, ArrayList<String>> schedule) {
         this.schedule = schedule;
-    }
-
-    public Family getFamily() {
-        return family;
     }
 
     public void setFamily(Family family) {
@@ -133,17 +125,13 @@ public class Human {
 
     @Override
     public String toString() {
-        return "Human{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", year=" + birthDate +
-                ", iq=" + iq +
-                ", schedule=" + schedule +
-                '}';
-    }
-    @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Finalized in Human class:" + this);
+        String s = String.format("Human{name='%s', surname='%s', birth date=%s, iq=1, schedule=%s}",
+                name,
+                surname,
+                LocalDate.ofEpochDay(birthDate).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString(),
+                schedule.toString());
+
+        return s;
     }
 
 }

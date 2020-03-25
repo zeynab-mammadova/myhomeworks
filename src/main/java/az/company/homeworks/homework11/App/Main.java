@@ -15,10 +15,15 @@ public class Main {
         FamilyController controller=new FamilyController(familyService);
 
         Human Michael = new Man("Michael", "Karoline", LocalDate.of(1970, 2, 20).toEpochDay(), null);
+        System.out.println("Michael Karoline"+Michael.describeAge());
         Human Laura = new Woman("Laura", "Karoline", LocalDate.of(1973, 8, 31).toEpochDay(), null);
+        System.out.println("Laura Karoline "+Laura.describeAge());
+
 
         Human Tom = new Man("Tom", "West", LocalDate.of(1976, 1, 15).toEpochDay(), null);
+        System.out.println("Tom West"+Tom.describeAge());
         Human Jane = new Woman("Jane", "West", LocalDate.of(1964, 2, 18).toEpochDay(), null);
+        System.out.println("Jane West "+Jane.describeAge());
 
         controller.createNewFamily(Michael, Laura);
         controller.createNewFamily(Tom, Jane);
@@ -27,11 +32,15 @@ public class Main {
         Family west = controller.getFamilyById(1);
 
         Human JohnKaroline = new Man("John", "Karoline", LocalDate.of(2007, 8, 30).toEpochDay(), karoline);
+        System.out.println("John Karoline"+JohnKaroline.describeAge());
         Human RoseKaroline = new Woman("Rose", "Karoline", LocalDate.of(1993, 6, 5).toEpochDay(), karoline);
+        System.out.println("Rose Karoline "+RoseKaroline.describeAge());
 
         //Create new family
         Human mikeParker = new Man("Mike", "Parker", LocalDate.of(1955, 4, 11).toEpochDay(), null);
+        System.out.println("Mike Parker "+mikeParker.describeAge());
         Human hudaParker = new Man("Huda", "Parker", LocalDate.of(1957, 12, 31).toEpochDay(), null);
+        System.out.println("Huda Parker "+hudaParker.describeAge());
         controller.createNewFamily(mikeParker, hudaParker);
 
         //addPet and getPets
@@ -45,7 +54,8 @@ public class Main {
         System.out.printf("There are %d families.\n", familyCount);
 
 
-        controller.adoptChild(west, new Man("Bob", "Hailey", "21/09/1996", 119));
+        controller.adoptChild(west, new Man("Bob", "Hailey", "21/09/1996", 99));
+
 
 
         System.out.println("Get all families:");
@@ -62,7 +72,7 @@ public class Main {
         controller.getAllFamiliesLessThan(4);
 
 
-        controller.deleteAllChildrenOlderThan(15);
+        controller.deleteAllChildrenOlderThan(15,2020);
         System.out.println("After deleting older children");
         controller.displayAllFamilies();
 

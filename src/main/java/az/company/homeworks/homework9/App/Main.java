@@ -43,7 +43,7 @@ public class Main {
         System.out.printf("There are %d families.\n", familyCount);
 
 
-        controller.adoptChild(west, new Man("Bob", "Hailey", 2005, null));
+        controller.adoptChild(west, new Man("Bob", "Hailey", 2006, null));
 
 
         System.out.println("Get all families:");
@@ -60,7 +60,7 @@ public class Main {
         controller.getAllFamiliesLessThan(4);
 
 
-        controller.deleteAllChildrenOlderThan(15);
+        controller.deleteAllChildrenOlderThan(15,2020);
         System.out.println("After deleting older children");
         controller.displayAllFamilies();
 

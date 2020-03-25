@@ -89,21 +89,18 @@ public class FamilyService {
         return familyDao.getFamilyByIndex(index);
     }
 
-    public void deleteAllChildrenOlderThan(int age) {
-        LocalDate year = LocalDate.now();
+    public void deleteAllChildrenOlderThan(int age, int year) {
 
-        getAllFamilies().forEach(family -> {
-            Iterator<Human> humanIterator = family.getChildren().iterator();
-            ArrayList<Human> youngerChildren = new ArrayList<>();
-            while (humanIterator.hasNext()) {
-                Human human = humanIterator.next();
-                if (Period.between(LocalDate.ofEpochDay(human.getYear()), year).getYears() < age)
-                    youngerChildren.add(human);
-            }
-            family.setChildren(youngerChildren);
-        });
+        getAllFamilies()
+                .stream()
+                .forEach((family) -> {
+                    List<Human> children = family.getChildren();
+                    children
+                            .removeIf((child) -> (year - child.getYear()) > age);
+                    family.setChildren(children);
+                    familyDao.saveFamily(family);
+                });
     }
-
     public Set<Pet> getPets(int index) {
         return getFamilyById(index).getPet();
     }

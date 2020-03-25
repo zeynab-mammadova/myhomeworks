@@ -1,11 +1,15 @@
 package az.company.homeworks.homework10.Service;
 
-import az.company.homeworks.homework10.App.*;
+import az.company.homeworks.homework10.App.Family;
+import az.company.homeworks.homework10.App.Human;
+import az.company.homeworks.homework10.App.Man;
+import az.company.homeworks.homework10.App.Pet;
 import az.company.homeworks.homework10.Dao.FamilyDao;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FamilyService {
@@ -21,9 +25,7 @@ public class FamilyService {
 
     public void displayAllFamilies() {
         List<Family> families = getAllFamilies();
-        for (int i = 0; i < families.size(); i++) {
-            System.out.println((i + 1) + ": " + families.get(i).toString());
-        }
+        families.forEach(family -> System.out.printf("%d. %s\n", families.indexOf(family)+1, family.toString()));
     }
 
     public void getAllFamiliesBiggerThan(int index) {
@@ -41,12 +43,12 @@ public class FamilyService {
     }
 
     public int countFamiliesWithMemberNumber(int memberCount) {
-        int counter = 0;
         List<Family> families = familyDao.getAllFamilies();
-        for (Family family : families) {
-            if (family.countFamily() == memberCount) counter++;
-        }
-        return counter;
+        families = families.stream()
+                .filter(family -> family.countFamily() == memberCount)
+                .collect(Collectors.toList());
+
+        return families.size();
     }
 
     public void createNewFamily(Human father, Human mother) {
@@ -87,21 +89,18 @@ public class FamilyService {
         return familyDao.getFamilyByIndex(index);
     }
 
-    public void deleteAllChildrenOlderThan(int age) {
-        LocalDate year = LocalDate.now();
+    public void deleteAllChildrenOlderThan(int age, int year) {
 
-        getAllFamilies().forEach(family -> {
-            Iterator<Human> humanIterator = family.getChildren().iterator();
-            ArrayList<Human> youngerChildren = new ArrayList<>();
-            while (humanIterator.hasNext()) {
-                Human human = humanIterator.next();
-                if (Period.between(LocalDate.ofEpochDay(human.getYear()), year).getYears() < age)
-                    youngerChildren.add(human);
-            }
-            family.setChildren(youngerChildren);
-        });
+        getAllFamilies()
+                .stream()
+                .forEach((family) -> {
+                    List<Human> children = family.getChildren();
+                    children
+                            .removeIf((child) -> (year - child.getYear()) > age);
+                    family.setChildren(children);
+                    familyDao.saveFamily(family);
+                });
     }
-
     public Set<Pet> getPets(int index) {
         return getFamilyById(index).getPet();
     }

@@ -5,6 +5,7 @@ import az.company.homeworks.homework9.Dao.FamilyDao;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FamilyService {
@@ -87,18 +88,19 @@ public class FamilyService {
         return familyDao.getFamilyByIndex(index);
     }
 
-    public void deleteAllChildrenOlderThan(int age) {
-        int year = LocalDate.now().getYear();
+    public void deleteAllChildrenOlderThan(int age, int year){
 
-        getAllFamilies().forEach(family -> {
-            Iterator<Human> humanIterator = family.getChildren().iterator();
-            ArrayList<Human> youngerChildren = new ArrayList<>();
-            while (humanIterator.hasNext()) {
-                Human human = humanIterator.next();
-                if (year - human.getYear() < age) youngerChildren.add(human);
-            }
-            family.setChildren(youngerChildren);
-        });
+        getAllFamilies()
+                .stream()
+                .forEach((family) -> {
+                    List<Human> children = family.getChildren();
+                            children
+                            .removeIf((child) -> (year-child.getYear()) > age);
+                    family.setChildren(children);
+                    familyDao.saveFamily(family);
+                });
+
+
     }
 
     public Set<Pet> getPets(int index) {

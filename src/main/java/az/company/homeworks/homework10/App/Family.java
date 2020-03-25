@@ -120,11 +120,5 @@ public void addPet(Pet pet){
 
     }
 
-
-
-    @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Finalized in Family class: " + this);
-    }
 }
 
