@@ -10,7 +10,7 @@ public class GCDApp {
 
   public static void main(String[] args) {
     System.out.println(gcd(7,5));
-    System.out.println(gcd(20,5));
+    System.out.println(gcd(5,20));
     System.out.println(gcd(36,24));
     System.out.println(gcd(3,9));
 
