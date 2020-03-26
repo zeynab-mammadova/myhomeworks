@@ -172,6 +172,7 @@ public class Core {
           console.printLn("Enter the age");
           int childAge = Integer.parseInt(console.readLn());
           familyController.deleteAllChildrenOlderThan(childAge);
+          System.out.println("Done!");
           break;
         case SAVE_DATA:
           familyController.saveData();

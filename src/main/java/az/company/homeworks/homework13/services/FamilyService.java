@@ -7,11 +7,13 @@ import az.company.homeworks.homework13.entities.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class FamilyService {
     private FamilyDao<Family> familyDao = new CollectionFamilyDao();
@@ -78,14 +80,13 @@ public class FamilyService {
             family.getChildren().add(child);
     }
     public void deleteAllChildrenOlderThan(int age) {
-
+        LocalDate now = LocalDate.now();
         getAllFamilies()
-                .forEach((family) -> {
-                    List<Human> children = family.getChildren();
-                    children.removeIf((child) -> (LocalDate.now().getYear() - child.getBirthDate().getYear()) > age);
-                    family.setChildren(children);
-                    familyDao.saveFamily(family);
-                });
+                .stream()
+                .filter(family -> family.getChildren() != null)
+                .forEach(family -> IntStream.range(0, family.getChildren().size())
+                        .filter(i -> Period.between(family.getChildren().get(i).getBirthDate(), now).getYears() > age)
+                        .forEach(family::deleteChild));
     }
 
     public int count() {

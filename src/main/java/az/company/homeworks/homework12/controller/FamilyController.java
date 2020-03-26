@@ -56,8 +56,8 @@ public class FamilyController {
     }
 
 
-    public void deleteAllChildrenOlderThan(int age,int year){
-        familyService.deleteAllChildrenOlderThan(age,year);
+    public void deleteAllChildrenOlderThan(int age){
+        familyService.deleteAllChildrenOlderThan(age);
     }
 
 

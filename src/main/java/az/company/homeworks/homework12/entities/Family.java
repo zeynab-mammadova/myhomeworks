@@ -5,7 +5,7 @@ import java.util.*;
 public class Family {
     private Human mother;
     private Human father;
-    private ArrayList<Human> children;
+    private List<Human> children;
     private Pet pet;
     private Set<Pet> pets= new HashSet<>();
 
@@ -15,7 +15,7 @@ public class Family {
         this.father = father;
     }
 
-    public Family(Human mother, Human father, ArrayList<Human> children) {
+    public Family(Human mother, Human father, List<Human> children) {
         this.mother = mother;
         this.father = father;
         this.children = children;
@@ -43,7 +43,7 @@ public class Family {
         this.father = father;
     }
 
-    public ArrayList<Human> getChildren() {
+    public List<Human> getChildren() {
         return children;
     }
 

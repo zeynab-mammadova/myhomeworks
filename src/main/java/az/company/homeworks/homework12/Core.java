@@ -69,7 +69,7 @@ public class Core {
                   new Woman("Huda", "Parker", LocalDate.of(1957, 12, 31),89,schedule),
                   new Man("Mike", "Parker", LocalDate.of(1955, 4, 11),94,schedule));
           familyController.bornChild("Susan", "Jame", West);
-          familyController.adoptChild(Rose, West);
+          familyController.adoptChild(Rose, Karoline);
           familyController.addPet(0, new DomesticCat(Species.CAT, "Badem", 4, 45));
           console.printLn("Test data created!");
           break;
@@ -172,7 +172,8 @@ public class Core {
         case ALL_CHILDREN_ABOVE_AGE_REMOVE:
           console.printLn("Enter the age");
           int childAge = Integer.parseInt(console.readLn());
-          familyController.deleteAllChildrenOlderThan(childAge,2020);
+          familyController.deleteAllChildrenOlderThan(childAge);
+          System.out.println("Done!");
           break;
         case EXIT:
           cont = false;
