@@ -15,6 +15,8 @@ public class Man extends Human {
     public Man(String name, String surname, String birthDate, int iq) {
         super(name, surname, birthDate, iq);
     }
+
+
     public void CarLove(String car){
         System.out.printf("I love %s, and my dream is to buy BMW \n", car );
     }

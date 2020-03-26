@@ -16,6 +16,8 @@ public class Woman extends Human {
     public Woman(String name, String surname, String birthDate, int iq) {
         super(name, surname, birthDate, iq);
     }
+
+
     public void makeupLove(String makeup){
         System.out.printf("My favourite %s\n brand is Zoeva", makeup );
     }
