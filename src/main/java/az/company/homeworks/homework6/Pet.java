@@ -4,14 +4,6 @@ import java.util.Objects;
 
 public class Pet {
 
-    enum Species {
-        DOG,
-        CAT,
-        HAMSTER,
-        COW,
-        FROG
-    }
-
 
     private Species species;
     private String nickname;

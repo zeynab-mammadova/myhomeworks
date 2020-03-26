@@ -1,10 +1,9 @@
-package az.company.homeworks.homework8;
+package az.company.homeworks.homework12.App;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public class Fish extends Pet {
-private Species spec=Species.FISH;
+private Species spec= Species.FISH;
 
     public Fish(Species species, String nickname, int trickLevel) {
         species = spec;
@@ -42,8 +41,7 @@ private Species spec=Species.FISH;
     @Override
     public String toString() {
         return "Fish{" +
-                "species=" + spec +
+                "spec=" + spec +
                 '}';
     }
-
 }

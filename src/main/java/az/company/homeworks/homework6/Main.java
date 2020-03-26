@@ -7,7 +7,7 @@ public class Main {
         Human Laura = new Human("Laura", "Karoline", 1975, 93);
         Human John = new Human("John", "Bravo", 2004, 88);
         Human Rose = new Human("Rose", "Bravo", 2006, 90);
-        Pet hamster = new Pet(Pet.Species.HAMSTER, "Yulaf", 2, 40, new String[]{"eating,running,sleeping"});
+        Pet hamster = new Pet(Species.HAMSTER, "Yulaf", 2, 40, new String[]{"eating,running,sleeping"});
         String[][] schedule = {{DayOfWeek.SUNDAY.name(), "Read book"}, {DayOfWeek.MONDAY.name(), "Go to the IBA"},
                 {DayOfWeek.TUESDAY.name(), "Go to the museum"}, {DayOfWeek.WEDNESDAY.name(), "Go to the IBA"},
                 {DayOfWeek.THURSDAY.name(), "Do homework"}, {DayOfWeek.FRIDAY.name(), "Go to the IBA"},
@@ -25,7 +25,7 @@ public class Main {
         family.deleteChild(0);
         System.out.println("Number of family members after 1st child leave family: " + family.countFamily());
         System.out.println(family.toString());
-        family.deleteChild(Rose);
+        family.deleteChild(John);
         System.out.println("Number of family members after 2nd child leave family: " + family.countFamily());
         System.out.println(family.toString());
 

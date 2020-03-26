@@ -1,21 +1,24 @@
-package az.company.homeworks.homework8;
+package az.company.homeworks.homework12.App;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 public abstract class Pet {
+
+
     private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
     private Set<String> habits;
+
     public Pet(String nickname, int trickLevel) {
         this.nickname = nickname;
         this.trickLevel = trickLevel;
     }
 
-    public Pet(String nickname, int age, int trickLevel, Set<String> habits) {
+    public Pet(String nickname, int age, int trickLevel, HashSet<String> habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -69,29 +72,36 @@ public abstract class Pet {
         this.habits = habits;
     }
 
+    public Species getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(Species species) {
+        this.species = species;
+    }
+
     public String toString() {
         return "{nickname= " + getNickname() + ", age= " + getAge() + ", trickLevel= " + getTrickLevel() + ", habits= " + getHabits() + "}";
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pet pet = (Pet) o;
-        return age == pet.age &&
-                trickLevel == pet.trickLevel &&
-                species.equals(pet.species) &&
-                nickname.equals(pet.nickname);
+        return getAge() == pet.getAge() &&
+                getTrickLevel() == pet.getTrickLevel() &&
+                Objects.equals(getNickname(), pet.getNickname()) &&
+                getSpecies() == pet.getSpecies();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(species, nickname, age, trickLevel);
+        return Objects.hash(nickname, age, trickLevel, species);
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Finalized in Pet class: " + this);
-    }
+
+
 }
 
