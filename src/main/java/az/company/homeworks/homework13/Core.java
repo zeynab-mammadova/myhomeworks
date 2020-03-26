@@ -119,13 +119,12 @@ public class Core {
           familyController.createNewFamily(
                   new Woman(momname,momLname, LocalDate.of(mYear,mMonth,mDay),mIq),
                   new Man(fathername,fatherLname, LocalDate.of(fYear,fMonth,fDay),fIq));
-          System.out.println("Family created");
+          System.out.println("New family created");
           break;
         case FAMILY_INDEX_DELETE:
           console.printLn("Enter the index for deleting");
           int index1 = Integer.parseInt(console.readLn())-1;
           familyController.deleteFamilyByIndex(index1);
-          System.out.println("Family deleted..");
           break;
         case FAMILY_INDEX_EDIT:
           console.printLn("Choose a number between 1-3");
@@ -172,7 +171,7 @@ public class Core {
         case ALL_CHILDREN_ABOVE_AGE_REMOVE:
           console.printLn("Enter the age");
           int childAge = Integer.parseInt(console.readLn());
-          familyController.deleteAllChildrenOlderThan(childAge,2020);
+          familyController.deleteAllChildrenOlderThan(childAge);
           break;
         case SAVE_DATA:
           familyController.saveData();
@@ -184,6 +183,7 @@ public class Core {
           cont = false;
           break;
         case HELP:
+          System.out.println("Invalid Option");
           //default:
           console.printLn(mainController.help());
           break;

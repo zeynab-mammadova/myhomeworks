@@ -3,6 +3,7 @@ package az.company.homeworks.homework12.services;
 import az.company.homeworks.homework12.dao.CollectionFamilyDao;
 import az.company.homeworks.homework12.dao.FamilyDao;
 import az.company.homeworks.homework12.entities.*;
+import az.company.homeworks.homework12.exception.FamilyOverflowException;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -65,9 +66,15 @@ public class FamilyService {
             Woman child = new Woman(feminine, surname, birthDate);
             family.addChild(child);
         }
+        if(family.countFamily()>6){
+            throw new FamilyOverflowException("Family size can not exceed 7");
+        }
     }
 
     public void adoptChild(Human child, Family family) {
+        if(family.countFamily()>6){
+            throw new FamilyOverflowException("Family size can not exceed 7");
+        }
         family.getChildren().add(child);
 
     }
@@ -76,9 +83,9 @@ public class FamilyService {
 
         getAllFamilies()
                 .forEach((family) -> {
-                    ArrayList<Human> children = family.getChildren();
+                    List<Human> children = family.getChildren();
                     children
-                            .removeIf((child) -> (year - child.getBirthDate().getYear()) > age);
+                            .removeIf((child) -> (LocalDate.now().getYear() - child.getBirthDate().getYear()) > age);
                     family.setChildren(children);
                     familyDao.saveFamily(family);
                 });

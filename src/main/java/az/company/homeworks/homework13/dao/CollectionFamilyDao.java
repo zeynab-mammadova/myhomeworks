@@ -19,7 +19,12 @@ public class CollectionFamilyDao implements FamilyDao<Family> {
 
     @Override
     public Family getFamilyByIndex(int index) {
-        return families.get(index);
+        if (index < families.size() && index >= 0) {
+            return families.get(index);
+        }
+        System.out.println("Invalid id");
+        return null;
+
     }
 
     @Override
@@ -27,9 +32,11 @@ public class CollectionFamilyDao implements FamilyDao<Family> {
         for (int i = 0; i <families.size() ; i++) {
             if (i == index) {
                 families.remove(index);
+                System.out.println("Family deleted..");
                 return true;
             }
         }
+        System.out.println("Invalid id");
         return false;
     }
 

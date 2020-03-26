@@ -14,6 +14,7 @@ public class Parser {
     else if ("10".equals(origin)) return Command.SAVE_DATA;
     else if ("11".equals(origin)) return Command.LOAD_DATA;
     else if ("EXIT".equalsIgnoreCase(origin)) return Command.EXIT;
+
     else return Command.HELP;
   }
 }

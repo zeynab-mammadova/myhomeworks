@@ -119,12 +119,5 @@ public void addPet(Pet pet){
         return  Objects.hash(getMother(), getFather(),getChildren());
 
     }
-
-
-
-    @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Finalized in Family class: " + this);
-    }
 }
 

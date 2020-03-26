@@ -1,5 +1,6 @@
 package az.company.homeworks.homework13.services;
 
+import az.company.homeworks.homework12.exception.FamilyOverflowException;
 import az.company.homeworks.homework13.dao.CollectionFamilyDao;
 import az.company.homeworks.homework13.dao.FamilyDao;
 import az.company.homeworks.homework13.entities.*;
@@ -51,34 +52,37 @@ public class FamilyService {
     }
 
     public void bornChild(String feminine, String masculine, Family family) {
-        String surname = family.getFather().getSurname();
+        String surname = family.getMother().getSurname();
         LocalDate birthDate = LocalDate.now();
         Random generator = new Random();
         String[] gender = {"Male", "Female"};
         int a = generator.nextInt(gender.length);
         String setGender = gender[a];
-        if ("male".equalsIgnoreCase(setGender)) {
+          if("male".equalsIgnoreCase(setGender)) {
             Man child = new Man(masculine, surname,birthDate);
             family.addChild(child);
         }
-        if ("female".equalsIgnoreCase(setGender)) {
+         if ("female".equalsIgnoreCase(setGender)) {
             Woman child = new Woman(feminine, surname, birthDate);
             family.addChild(child);
+        }
+        if(family.countFamily()>6){
+            throw new FamilyOverflowException("Family size can not exceed 7");
         }
     }
 
     public void adoptChild(Human child, Family family) {
-        family.getChildren().add(child);
-
+        if(family.countFamily()>6){
+            throw new FamilyOverflowException("Family size can not exceed 7");
+        }
+            family.getChildren().add(child);
     }
-
-    public void deleteAllChildrenOlderThan(int age, int year) {
+    public void deleteAllChildrenOlderThan(int age) {
 
         getAllFamilies()
                 .forEach((family) -> {
-                    ArrayList<Human> children = family.getChildren();
-                    children
-                            .removeIf((child) -> (year - child.getBirthDate().getYear()) > age);
+                    List<Human> children = family.getChildren();
+                    children.removeIf((child) -> (LocalDate.now().getYear() - child.getBirthDate().getYear()) > age);
                     family.setChildren(children);
                     familyDao.saveFamily(family);
                 });
@@ -99,7 +103,6 @@ public class FamilyService {
     public void addPet(int index, Pet pet) {
         getFamilyById(index).getPets().add(pet);
     }
-
     public void saveData() throws IOException {
         familyDao.saveData();
     }

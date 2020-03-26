@@ -1,9 +1,6 @@
 package az.company.homeworks.homework12.entities;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Family {
     private Human mother;
@@ -50,7 +47,7 @@ public class Family {
         return children;
     }
 
-    public void setChildren(ArrayList<Human> children) {
+    public void setChildren(List<Human> children) {
         this.children = children;
     }
 
