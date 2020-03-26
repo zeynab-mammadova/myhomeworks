@@ -39,7 +39,7 @@ public class Main {
         //Create new family
         Human mikeParker = new Man("Mike", "Parker", LocalDate.of(1955, 4, 11).toEpochDay(), null);
         System.out.println("Mike Parker "+mikeParker.describeAge());
-        Human hudaParker = new Man("Huda", "Parker", LocalDate.of(1957, 12, 31).toEpochDay(), null);
+        Human hudaParker = new Woman("Huda", "Parker", LocalDate.of(1957, 12, 31).toEpochDay(), null);
         System.out.println("Huda Parker "+hudaParker.describeAge());
         controller.createNewFamily(mikeParker, hudaParker);
 
