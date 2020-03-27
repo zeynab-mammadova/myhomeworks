@@ -75,57 +75,74 @@ public class Core {
           break;
         case ENTIRE_LIST_SHOW:
           familyController.displayAllFamilies();
+          console.printLn(menu.show());
           break;
         case FAMILY_MEMBERS_MORE_THAN_SHOW:
           console.printLn("Enter the number which will show family members more than this number: ");
-          int value1 = Integer.parseInt(console.readLn());
-          System.out.println(familyController.getFamiliesBiggerThan(value1));
+          try{ int value1 = Integer.parseInt(console.readLn());
+            System.out.println(familyController.getFamiliesBiggerThan(value1));
+            console.printLn(menu.show());}
+          catch (NumberFormatException ex){
+            System.out.println("Wrong format");
+            console.printLn(menu.show());
+          }
           break;
         case FAMILY_MEMBERS_LESS_THAN_SHOW:
           console.printLn("Enter the number which will show family members less than this number: ");
-          int value2 = Integer.parseInt(console.readLn());
-          System.out.println(familyController.getFamiliesLessThan(value2));
-          break;
+          try{ int value2 = Integer.parseInt(console.readLn());
+            System.out.println(familyController.getFamiliesLessThan(value2));
+            console.printLn(menu.show());}
+          catch (NumberFormatException ex){
+            System.out.println("Wrong format");
+            console.printLn(menu.show());
+          }break;
         case FAMILY_MEMBERS_EQUALS_COUNT:
           console.printLn("Enter the number which will show family members equal to this number: ");
           int value3 = Integer.parseInt(console.readLn());
           System.out.println("There is "+familyController.countFamiliesWithMemberNumber(value3)+" family with this member number");
+          console.printLn(menu.show());
           break;
         case FAMILY_CREATE:
-          console.printLn("Enter the mother's name");
-          String momname = console.readLn();
-          console.printLn("Enter the mother's last name");
-          String momLname = console.readLn();
-          console.printLn("Enter the mother's birth year");
-          int mYear = Integer.parseInt(console.readLn());
-          console.printLn("Enter the mother's month of birth(with number)");
-          int mMonth = Integer.parseInt(console.readLn());
-          console.printLn("Enter the mother's birthday");
-          int mDay = Integer.parseInt(console.readLn());
-          console.printLn("Enter the mother's iq");
-          int mIq = Integer.parseInt(console.readLn());
-          console.printLn("Enter the father's name");
-          String fathername = console.readLn();
-          console.printLn("Enter the father's last name");
-          String fatherLname = console.readLn();
-          console.printLn("Enter the father's birth year");
-          int fYear = Integer.parseInt(console.readLn());
-          console.printLn("Enter the father's month of birth");
-          int fMonth = Integer.parseInt(console.readLn());
-          console.printLn("Enter the father's birthday");
-          int fDay = Integer.parseInt(console.readLn());
-          console.printLn("Enter the father's iq");
-          int fIq = Integer.parseInt(console.readLn());
-          familyController.createNewFamily(
-                  new Woman(momname,momLname, LocalDate.of(mYear,mMonth,mDay),mIq),
-                  new Man(fathername,fatherLname, LocalDate.of(fYear,fMonth,fDay),fIq));
-          System.out.println("Family created");
+          try{
+            console.printLn("Enter the mother's name");
+            String momname = console.readLn();
+            console.printLn("Enter the mother's last name");
+            String momLname = console.readLn();
+            console.printLn("Enter the mother's birth year");
+            int mYear = Integer.parseInt(console.readLn());
+            console.printLn("Enter the mother's month of birth(with number)");
+            int mMonth = Integer.parseInt(console.readLn());
+            console.printLn("Enter the mother's birthday");
+            int mDay = Integer.parseInt(console.readLn());
+            console.printLn("Enter the mother's iq");
+            int mIq = Integer.parseInt(console.readLn());
+            console.printLn("Enter the father's name");
+            String fathername = console.readLn();
+            console.printLn("Enter the father's last name");
+            String fatherLname = console.readLn();
+            console.printLn("Enter the father's birth year");
+            int fYear = Integer.parseInt(console.readLn());
+            console.printLn("Enter the father's month of birth");
+            int fMonth = Integer.parseInt(console.readLn());
+            console.printLn("Enter the father's birthday");
+            int fDay = Integer.parseInt(console.readLn());
+            console.printLn("Enter the father's iq");
+            int fIq = Integer.parseInt(console.readLn());
+            familyController.createNewFamily(
+                    new Woman(momname,momLname, LocalDate.of(mYear,mMonth,mDay),mIq),
+                    new Man(fathername,fatherLname, LocalDate.of(fYear,fMonth,fDay),fIq));
+            System.out.println("New family created");
+            console.printLn(menu.show());}
+          catch (NumberFormatException ex){
+            System.out.println("Wrong format");
+            console.printLn(menu.show());
+          }
           break;
         case FAMILY_INDEX_DELETE:
           console.printLn("Enter the index for deleting");
           int index1 = Integer.parseInt(console.readLn())-1;
           familyController.deleteFamilyByIndex(index1);
-          System.out.println("Family deleted..");
+          console.printLn(menu.show());
           break;
         case FAMILY_INDEX_EDIT:
           console.printLn("Choose a number between 1-3");
@@ -143,29 +160,35 @@ public class Core {
               String boyName = console.readLn();
               familyController.bornChild(girlName,boyName,familyController.getFamilyById(index2));
               System.out.println("Ingee,ingee");
+              console.printLn(menu.show());
               break;
             case 2:
-              console.printLn("Enter the index");
-              int index3 = Integer.parseInt(console.readLn())-1;
-              console.printLn("Enter the name");
-              String cName = console.readLn();
-              console.printLn("Enter the surname name");
-              String cSname = console.readLn();
-              console.printLn("Enter the birth year");
-              int cYear = Integer.parseInt(console.readLn());
-              console.printLn("Enter the birth month");
-              int cMonth = Integer.parseInt(console.readLn());
-              console.printLn("Enter the birth day");
-              int cDay = Integer.parseInt(console.readLn());
-              console.printLn("Enter the iq");
-              int cIq  = Integer.parseInt(console.readLn());
-              familyController.adoptChild(
-                      new Human(cName,cSname, LocalDate.of(cYear,cMonth,cDay),cIq),
-                      familyController.getFamilyById(index3));
-              System.out.println("I'll love my new family..");
+              try{
+                console.printLn("Enter the index");
+                int index3 = Integer.parseInt(console.readLn())-1;
+                console.printLn("Enter the name");
+                String cName = console.readLn();
+                console.printLn("Enter the surname name");
+                String cSname = console.readLn();
+                console.printLn("Enter the birth year");
+                int cYear = Integer.parseInt(console.readLn());
+                console.printLn("Enter the birth month");
+                int cMonth = Integer.parseInt(console.readLn());
+                console.printLn("Enter the birth day");
+                int cDay = Integer.parseInt(console.readLn());
+                console.printLn("Enter the iq");
+                int cIq  = Integer.parseInt(console.readLn());
+                familyController.adoptChild(
+                        new Human(cName,cSname, LocalDate.of(cYear,cMonth,cDay),cIq),
+                        familyController.getFamilyById(index3));
+                System.out.println("I'll love my new family..");}
+              catch (NumberFormatException ex){
+                System.out.println("Wrong format");
+                console.printLn(menu.show());
+              }
               break;
             case 3:
-              menu.show();
+              console.printLn(menu.show());
               break;
           }
           break;
@@ -173,7 +196,8 @@ public class Core {
           console.printLn("Enter the age");
           int childAge = Integer.parseInt(console.readLn());
           familyController.deleteAllChildrenOlderThan(childAge);
-          System.out.println("Done!");
+          System.out.println("Deleted!");
+          console.printLn(menu.show());
           break;
         case EXIT:
           cont = false;
