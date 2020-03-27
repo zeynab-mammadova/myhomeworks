@@ -88,7 +88,7 @@ public class Family  implements Serializable {
     }
     @Override
     public String toString() {
-        return "family:\n"+
+        return "\nFamily:\n"+
                 "mother:"+mother+",\n"+
                 "father:"+father+",\n"+
                 "children:\n"+

@@ -23,7 +23,7 @@ public class FamilyController {
 
 
     public List<Family> getFamiliesBiggerThan(int value) {
-       return familyService.getFamiliesBiggerThan(value);
+        return familyService.getFamiliesBiggerThan(value);
     }
 
 

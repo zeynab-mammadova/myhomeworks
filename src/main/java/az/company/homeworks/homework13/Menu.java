@@ -18,7 +18,7 @@ public class Menu {
       sb.append("| 9. Remove all children over the age of majority                                                    |\n");
       sb.append("| 10. Save Data                                                                                      |\n");
       sb.append("| 11. Load Data                                                                                      |\n");
-      sb.append("| Exit                                                                                               |\n");
+      sb.append("| When you want to Exit just write 'Exit'                                                            |\n");
       sb.append("======================================================================================================\n");
       return sb.toString();
     }
