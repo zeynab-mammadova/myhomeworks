@@ -54,6 +54,13 @@ public class Human implements Serializable {
         this.iq = iq;
     }
 
+    public Human(String name, String surname, LocalDate birthDate, Family family){
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.family = family;
+    }
+
     void greetPet(){
          System.out.println("Hello");
      }

@@ -25,7 +25,9 @@ public final class Woman extends Human implements Serializable {
         super(name, surname, birthDate, iq);
     }
 
-
+    public Woman(String name, String surname, LocalDate birthDate,Family family) {
+        super(name,surname,birthDate,family);
+    }
     @Override
     void greetPet() {
         System.out.println("Hello");

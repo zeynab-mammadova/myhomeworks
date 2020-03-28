@@ -24,6 +24,10 @@ public final class Man extends Human {
         super(name, surname, birthDate, iq);
     }
 
+    public Man(String name, String surname, LocalDate birthDate, Family family) {
+        super(name,surname,birthDate,family);
+    }
+
     @Override
     void greetPet() {
         System.out.println("Hi");

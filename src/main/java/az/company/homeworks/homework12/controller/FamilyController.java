@@ -1,5 +1,6 @@
 package az.company.homeworks.homework12.controller;
 
+import az.company.homeworks.homework12.exception.FamilyOverflowException;
 import az.company.homeworks.homework12.services.FamilyService;
 import az.company.homeworks.homework12.entities.*;
 
@@ -46,14 +47,20 @@ public class FamilyController {
     }
 
 
-    public void bornChild(String feminine, String masculine, Family family){
-        familyService.bornChild(feminine, masculine, family);
+    public Family bornChild(Family family, String boyName, String girlName) throws FamilyOverflowException {
+        if (family.countFamily() >= 5) {
+            throw new FamilyOverflowException("More than 5 members will not be allowed");
+        }
+       return familyService.bornChild(family, boyName, girlName);
     }
 
-
-    public void adoptChild(Human child, Family family) {
-        familyService.adoptChild(child, family);
+    public Family adoptChild(Family family, Human human) {
+        if (family.countFamily() >= 5) {
+            throw new FamilyOverflowException("More than 5 members is not be allowed");
+        }
+        return familyService.adoptChild(family, human);
     }
+
 
 
     public void deleteAllChildrenOlderThan(int age){

@@ -5,6 +5,7 @@ import az.company.homeworks.homework12.console.Console;
 import az.company.homeworks.homework12.controller.FamilyController;
 import az.company.homeworks.homework12.controller.MainController;
 import az.company.homeworks.homework12.entities.*;
+import az.company.homeworks.homework12.exception.FamilyOverflowException;
 import az.company.homeworks.homework12.io.Command;
 import az.company.homeworks.homework12.io.Parser;
 
@@ -68,8 +69,8 @@ public class Core {
           familyController.createNewFamily(
                   new Woman("Huda", "Parker", LocalDate.of(1957, 12, 31),89,schedule),
                   new Man("Mike", "Parker", LocalDate.of(1955, 4, 11),94,schedule));
-          familyController.bornChild("Susan", "Jame", West);
-          familyController.adoptChild(Rose, Karoline);
+          familyController.bornChild(West, "Jame","Susan");
+          familyController.adoptChild(Karoline, Rose);
           familyController.addPet(0, new DomesticCat(Species.CAT, "Badem", 4, 45));
           console.printLn("Test data created!");
           break;
@@ -152,15 +153,18 @@ public class Core {
           int number = Integer.parseInt(console.readLn());
           switch (number){
             case 1:
-              console.printLn("Enter the index");
+             try{ console.printLn("Enter the index");
               int index2 = Integer.parseInt(console.readLn())-1;
               console.printLn("Enter girl name (or skip this step for write boy name)");
               String girlName = console.readLn();
               console.printLn("Enter boy name");
               String boyName = console.readLn();
-              familyController.bornChild(girlName,boyName,familyController.getFamilyById(index2));
+              familyController.bornChild(familyController.getFamilyById(index2),girlName,boyName);
               System.out.println("Ingee,ingee");
+              console.printLn(menu.show());}
+               catch (FamilyOverflowException ex){
               console.printLn(menu.show());
+            }
               break;
             case 2:
               try{
@@ -179,9 +183,11 @@ public class Core {
                 console.printLn("Enter the iq");
                 int cIq  = Integer.parseInt(console.readLn());
                 familyController.adoptChild(
-                        new Human(cName,cSname, LocalDate.of(cYear,cMonth,cDay),cIq),
-                        familyController.getFamilyById(index3));
+                        familyController.getFamilyById(index3), new Human(cName,cSname, LocalDate.of(cYear,cMonth,cDay),cIq));
                 System.out.println("I'll love my new family..");}
+              catch (FamilyOverflowException ex){
+                console.printLn(menu.show());
+              }
               catch (NumberFormatException ex){
                 System.out.println("Wrong format");
                 console.printLn(menu.show());

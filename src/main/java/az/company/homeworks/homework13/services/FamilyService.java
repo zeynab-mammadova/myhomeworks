@@ -52,34 +52,32 @@ public class FamilyService {
     public void deleteFamilyByIndex(int index) {
         familyDao.deleteFamily(index);
     }
-
-    public void bornChild(String feminine, String masculine, Family family) {
-        String surname = family.getMother().getSurname();
+    public Family bornChild(Family family, String boyName, String girlName) throws FamilyOverflowException {
+        if (!familyDao.getAllFamilies().contains(family)) return family;
+        Random rand = new Random();
+        String surname = family.getFather().getSurname();
         LocalDate birthDate = LocalDate.now();
-        Random generator = new Random();
-        String[] gender = {"Male", "Female"};
-        int a = generator.nextInt(gender.length);
-        String setGender = gender[a];
-          if("male".equalsIgnoreCase(setGender)) {
-            Man child = new Man(masculine, surname,birthDate);
+       Human child;
+        if (rand.nextBoolean()) child = new Man(boyName, surname, birthDate, family);
+        else child = new Woman(girlName, surname, birthDate, family);
+        try {
             family.addChild(child);
+        } catch (FamilyOverflowException e) {
+            throw e;
         }
-         if ("female".equalsIgnoreCase(setGender)) {
-            Woman child = new Woman(feminine, surname, birthDate);
-            family.addChild(child);
-        }
-        if(family.countFamily()>6){
-            throw new FamilyOverflowException("Family size can not exceed 6");
-        }
+        return family;
     }
 
-    public void adoptChild(Human child,Family family) {
-        if(family!=null && family.countFamily()>6){
-            throw new FamilyOverflowException("Family size can not exceed 6");
+    public Family adoptChild(Family family,Human human) throws FamilyOverflowException {
+        if (getAllFamilies().contains(family)) {
+            family.addChild(human);
+        } else {
+            family.addChild(human);
+            familyDao.saveFamily(family);
         }
-        family.getChildren().add(child);
-
+        return family;
     }
+
     public void deleteAllChildrenOlderThan(int age) {
         LocalDate now = LocalDate.now();
         getAllFamilies()

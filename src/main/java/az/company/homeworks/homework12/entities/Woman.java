@@ -24,6 +24,10 @@ public final class Woman extends Human {
         super(name, surname, birthDate, iq);
     }
 
+    public Woman(String name, String surname, LocalDate birthDate, Family family) {
+        super(name,surname,birthDate,family);
+    }
+
 
     @Override
     void greetPet() {
