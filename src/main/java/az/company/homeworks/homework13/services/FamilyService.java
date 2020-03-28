@@ -73,7 +73,7 @@ public class FamilyService {
         }
     }
 
-    public void adoptChild(az.company.homeworks.homework12.entities.Human child, az.company.homeworks.homework12.entities.Family family) {
+    public void adoptChild(Human child,Family family) {
         if(family!=null && family.countFamily()>6){
             throw new FamilyOverflowException("Family size can not exceed 6");
         }
