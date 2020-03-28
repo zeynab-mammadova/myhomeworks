@@ -74,7 +74,7 @@ public class FamilyService {
     }
 
     public void adoptChild(Human child, Family family) {
-        if(family.countFamily()>6){
+        if(family!=null && family.countFamily()>6){
             throw new FamilyOverflowException("Family size can not exceed 6");
         }
         family.getChildren().add(child);

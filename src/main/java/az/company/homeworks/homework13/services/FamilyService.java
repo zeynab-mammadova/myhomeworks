@@ -73,11 +73,12 @@ public class FamilyService {
         }
     }
 
-    public void adoptChild(Human child, Family family) {
-        if(family.countFamily()>6){
+    public void adoptChild(az.company.homeworks.homework12.entities.Human child, az.company.homeworks.homework12.entities.Family family) {
+        if(family!=null && family.countFamily()>6){
             throw new FamilyOverflowException("Family size can not exceed 6");
         }
-            family.getChildren().add(child);
+        family.getChildren().add(child);
+
     }
     public void deleteAllChildrenOlderThan(int age) {
         LocalDate now = LocalDate.now();
