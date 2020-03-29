@@ -60,7 +60,7 @@ public class CollectionFamilyDao implements FamilyDao<Family> {
     }
     @Override
     public void saveData() throws IOException {
-        FileOutputStream fout = new FileOutputStream("families.txt");
+        FileOutputStream fout = new FileOutputStream("db/families.txt");
         ObjectOutputStream oos = new ObjectOutputStream(fout);
         oos.writeObject(families);
         oos.close();
@@ -69,7 +69,7 @@ public class CollectionFamilyDao implements FamilyDao<Family> {
 
     @Override
     public void loadData() throws IOException, ClassNotFoundException {
-        FileInputStream fin = new FileInputStream("families.txt");
+        FileInputStream fin = new FileInputStream("db/families.txt");
         ObjectInputStream ois = new ObjectInputStream(fin);
         families = (List<Family>) ois.readObject();
         System.out.println(families);
