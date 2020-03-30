@@ -13,8 +13,8 @@
 //public class FamilyServiceTest {
 //    Man Michael = new Man("Michael", "Karoline", LocalDate.of(1970, 2, 20),88);
 //    Woman Laura = new Woman("Laura", "Karoline",   LocalDate.of(1973,8,31),89);
-//    Human curie3 = new Human("Rose", "Karoline",   LocalDate.of(1993, 6, 5));
-//    Human curie4 = new Human("John", "Karoline",  LocalDate.of(2007, 8, 30));
+//    Human Rose = new Human("Rose", "Karoline",   LocalDate.of(1993, 6, 5));
+//    Human John = new Human("John", "Karoline",  LocalDate.of(2007, 8, 30));
 //
 //
 //    Man Tom= new Man("Tom", "West", LocalDate.of(1976, 1, 15));
@@ -44,16 +44,15 @@
 //    void getAllFamilies() {
 //
 //        Family f1 = new Family(Laura, Michael);
-//        Family f2 = new Family(Jane, Tom);
 //        assertEquals(2, fs.getAllFamilies().size());
 //        assertEquals(f1, fs.getAllFamilies().get(0));
-//        assertEquals(f2, fs.getAllFamilies().get(1));
+//
 //
 //    }
 //
 //    @Test
 //    void getFamiliesBiggerThan() {
-//        assertEquals(familyList, fs.getFamiliesBiggerThan(1));
+//        fs.addPet(1, new DomesticCat(Species.CAT,"Meowchik",3,79));
 //        fs.addPet(1, new Dog(Species.DOG,"Awesome boy",4,48));
 //        fs.addPet(1, new DomesticCat(Species.CAT,"Yulaf",3,79));
 //        fs.addPet(1, new RoboCat(Species.ROBOCAT,"Bibo",1,60));
@@ -112,27 +111,27 @@
 //
 //    @Test
 //    void adoptChild() {
-//        fs.adoptChild(f, curie3);
-//        fs.adoptChild(f, curie4);
+//        fs.adoptChild(f, Rose);
+//        fs.adoptChild(f, John);
 //        assertEquals(4, f.countFamily());
 //
 //    }
 //
 //    @Test
 //    void deleteAllChildrenOlderThan() {
-//        fs.adoptChild(familyList.get(0), curie3);
-//        fs.adoptChild(familyList.get(0), curie4);
+//        fs.adoptChild(familyList.get(0), Rose);
+//        fs.adoptChild(familyList.get(0), John);
 //        fs.adoptChild(familyList.get(1), child2);
-//        fs.deleteAllChildrenOlderThan(18);
-//        assertFalse(familyList.get(0).getChildren().contains(curie3));
-//        assertFalse(familyList.get(0).getChildren().contains(curie4));
+//        fs.deleteAllChildrenOlderThan(15);
+//        assertFalse(familyList.get(0).getChildren().contains(Rose));
+//        assertFalse(familyList.get(0).getChildren().contains(John));
 //        assertEquals(0, familyList.get(1).getChildren().size());
 //
 //    }
 //
 //    @Test
 //    void count() {
-//        assertEquals(2, fs.count());
+//
 //        fs.createNewFamily(Huda, Mike);
 //        assertEquals(3, fs.count());
 //    }
