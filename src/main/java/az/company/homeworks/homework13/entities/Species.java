@@ -5,6 +5,7 @@ package az.company.homeworks.homework13.entities;
         CAT,
         MONKEY,
         PARROT,
+        ROBOCAT,
         UNKNOWN,
         FISH
 

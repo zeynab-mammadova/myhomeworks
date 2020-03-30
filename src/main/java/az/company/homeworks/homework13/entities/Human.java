@@ -18,7 +18,7 @@ public class Human implements Serializable {
     private Family family;
 
 
-    Human(String name, String surname, LocalDate birthDate) {
+    public Human(String name, String surname, LocalDate birthDate) {
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
@@ -69,7 +69,7 @@ public class Human implements Serializable {
          Period life = Period.between(birthDate, now);
      System.out.println(String.format("%d years, %d months, %d days", life.getYears(),life.getMonths(), life.getDays()));
     }
-    String getName() {
+    public String getName() {
         return name;
     }
 

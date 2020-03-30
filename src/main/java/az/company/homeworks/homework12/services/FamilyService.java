@@ -79,14 +79,9 @@ public class FamilyService {
         return family;
     }
 
-    public void deleteAllChildrenOlderThan(int age) {
-        LocalDate now = LocalDate.now();
-        getAllFamilies()
-                .stream()
-                .filter(family -> family.getChildren() != null)
-                .forEach(family -> IntStream.range(0, family.getChildren().size())
-                        .filter(i -> Period.between(family.getChildren().get(i).getBirthDate(), now).getYears() > age)
-                        .forEach(family::deleteChild));
+    public void deleteAllChildrenOlderThan(int age){
+        familyDao.getAllFamilies().stream()
+                .forEach(f->f.getChildren().removeIf(child->Period.between(child.getBirthDate(),LocalDate.now()).getYears()> age));
     }
 
 

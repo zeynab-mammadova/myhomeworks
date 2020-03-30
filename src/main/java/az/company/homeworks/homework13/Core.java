@@ -52,7 +52,7 @@ public class Core {
 
 
          Pet pet = new DomesticCat(Species.CAT, "Yulaf", 3, 79);
-        Pet pet2 = new Dog(Species.DOG, "Awesome_boy", 4, 48);
+        Pet pet2 = new Dog(Species.DOG, "Awesome boy", 4, 48);
           Set<Pet> pets = new HashSet<>();
           pets.add(pet);
           pets.add(pet2);
