@@ -164,6 +164,10 @@ public class Core {
                catch (FamilyOverflowException ex){
               console.printLn(menu.show());
             }
+             catch (NumberFormatException ex){
+               System.out.println("Wrong format");
+               console.printLn(menu.show());
+             }
               break;
             case 2:
               try{

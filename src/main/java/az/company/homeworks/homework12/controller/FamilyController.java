@@ -2,7 +2,7 @@ package az.company.homeworks.homework12.controller;
 
 import az.company.homeworks.homework12.services.FamilyService;
 import az.company.homeworks.homework12.entities.*;
-import az.company.homeworks.homework13.exception.FamilyOverflowException;
+import az.company.homeworks.homework12.exception.FamilyOverflowException;
 
 import java.util.List;
 import java.util.Set;
