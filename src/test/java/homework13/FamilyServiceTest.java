@@ -11,6 +11,7 @@
 //import java.util.List;
 //
 //public class FamilyServiceTest {
+//
 //    Man Michael = new Man("Michael", "Karoline", LocalDate.of(1970, 2, 20),88);
 //    Woman Laura = new Woman("Laura", "Karoline",   LocalDate.of(1973,8,31),89);
 //    Human Rose = new Human("Rose", "Karoline",   LocalDate.of(1993, 6, 5));
@@ -42,11 +43,7 @@
 //
 //    @Test
 //    void getAllFamilies() {
-//
-//        Family f1 = new Family(Laura, Michael);
-//        assertEquals(2, fs.getAllFamilies().size());
-//        assertEquals(f1, fs.getAllFamilies().get(0));
-//
+//        assertEquals(1, fs.getAllFamilies().size());
 //
 //    }
 //

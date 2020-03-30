@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Set;
 
 public class FamilyController {
-        private FamilyService familyService= new FamilyService();
+    private FamilyService familyService = new FamilyService();
+
     public List<Family> getAllFamilies() {
         return familyService.getAllFamilies();
     }
@@ -38,8 +39,8 @@ public class FamilyController {
     }
 
 
-    public void createNewFamily(Woman mother, Man father){
-       familyService.createNewFamily(mother,father);
+    public void createNewFamily(Woman mother, Man father) {
+        familyService.createNewFamily(mother, father);
     }
 
 
@@ -48,18 +49,27 @@ public class FamilyController {
     }
 
 
-    public Family bornChild(Family family, String boyName, String girlName) throws FamilyOverflowException {
-        if (family.countFamily() >= 5) {
-            throw new FamilyOverflowException("More than 5 members will not be allowed");
-        }
+    public Family bornChild(Family family, String boyName, String girlName) throws FamilyOverflowException, NullPointerException {
+        try {
+            if (family.countFamily() >= 5) {
+                throw new FamilyOverflowException("More than 5 members will not be allowed");
+            }
         return familyService.bornChild(family, boyName, girlName);
-    }
-
-    public Family adoptChild(Family family, Human human) {
-        if (family.countFamily() >= 5) {
-            throw new FamilyOverflowException("More than 5 members is not be allowed");
+    }catch (NullPointerException ex){
+            return null;
         }
-        return familyService.adoptChild(family, human);
+
+}
+    public Family adoptChild(Family family, Human human) {
+        try {
+
+            if (family.countFamily() >= 5) {
+                throw new FamilyOverflowException("More than 5 members is not be allowed");
+            }
+            return familyService.adoptChild(family, human);
+        } catch (NullPointerException ex){
+            return null;
+        }
     }
     public void deleteAllChildrenOlderThan(int age){
         familyService.deleteAllChildrenOlderThan(age);

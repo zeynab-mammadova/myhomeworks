@@ -1,8 +1,8 @@
 package az.company.homeworks.homework12.controller;
 
-import az.company.homeworks.homework12.exception.FamilyOverflowException;
 import az.company.homeworks.homework12.services.FamilyService;
 import az.company.homeworks.homework12.entities.*;
+import az.company.homeworks.homework13.exception.FamilyOverflowException;
 
 import java.util.List;
 import java.util.Set;
@@ -47,18 +47,27 @@ public class FamilyController {
     }
 
 
-    public Family bornChild(Family family, String boyName, String girlName) throws FamilyOverflowException {
-        if (family.countFamily() >= 5) {
-            throw new FamilyOverflowException("More than 5 members will not be allowed");
+    public Family bornChild(Family family, String boyName, String girlName) throws FamilyOverflowException, NullPointerException {
+        try {
+            if (family.countFamily() >= 5) {
+                throw new FamilyOverflowException("More than 5 members will not be allowed");
+            }
+            return familyService.bornChild(family, boyName, girlName);
+        }catch (NullPointerException ex){
+            return null;
         }
-       return familyService.bornChild(family, boyName, girlName);
-    }
 
+    }
     public Family adoptChild(Family family, Human human) {
-        if (family.countFamily() >= 5) {
-            throw new FamilyOverflowException("More than 5 members is not be allowed");
+        try {
+
+            if (family.countFamily() >= 5) {
+                throw new FamilyOverflowException("More than 5 members is not be allowed");
+            }
+            return familyService.adoptChild(family, human);
+        } catch (NullPointerException ex){
+            return null;
         }
-        return familyService.adoptChild(family, human);
     }
 
 

@@ -22,7 +22,7 @@ public class CollectionFamilyDao implements FamilyDao<Family> {
         try{
             return families.get(index);}
         catch (IndexOutOfBoundsException | NullPointerException e ){
-            System.out.println("Wrong Index");
+            System.out.println("Wrong Family Index");
             return null;
         }
     }

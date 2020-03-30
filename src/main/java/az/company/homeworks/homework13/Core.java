@@ -161,7 +161,6 @@ public class Core {
                 console.printLn("Enter boy name");
                 String boyName = console.readLn();
                 familyController.bornChild(familyController.getFamilyById(index2),girlName,boyName);
-                System.out.println("Ingee,ingee");
                 console.printLn(menu.show());}
               catch (FamilyOverflowException ex){
                 console.printLn(menu.show());
@@ -185,7 +184,6 @@ public class Core {
                 int cIq  = Integer.parseInt(console.readLn());
                 familyController.adoptChild(
                         familyController.getFamilyById(index3), new Human(cName,cSname, LocalDate.of(cYear,cMonth,cDay),cIq));
-                System.out.println("I'll love my new family..");
                 console.printLn(menu.show());}
               catch (FamilyOverflowException ex){
                 console.printLn(menu.show());

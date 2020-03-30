@@ -20,13 +20,12 @@ public class CollectionFamilyDao implements FamilyDao<Family> {
     @Override
     public Family getFamilyByIndex(int index) {
         try{
-        return families.get(index);}
+            return families.get(index);}
         catch (IndexOutOfBoundsException | NullPointerException e ){
-            System.out.println("Wrong Index");
+            System.out.println("Wrong Family Index");
             return null;
         }
     }
-
     @Override
     public boolean deleteFamily(int index) {
         for (int i = 0; i <families.size() ; i++) {

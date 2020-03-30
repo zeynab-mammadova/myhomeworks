@@ -87,8 +87,11 @@ public class FamilyService {
         return getAllFamilies().size();
     }
 
-    public Family getFamilyById(int index) {
-        return familyDao.getFamilyByIndex(index);
+    public Family getFamilyById(int index) {try{
+        return familyDao.getFamilyByIndex(index);}
+        catch (Exception ex){
+        return null;
+        }
     }
 
     public Set<Pet> getPets(int index) {
