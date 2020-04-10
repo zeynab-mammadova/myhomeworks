@@ -54,21 +54,26 @@ public class Family {
 
     public boolean deleteChild(Human child) {
         boolean flag=false;
-        for (int i = 0; i < children.length; i++) {
-            Human childIndex = children[i];
-            if (childIndex.equals(child)) {
-                for(int n = i; n < children.length - 1; n++){
-                    children[n] = children[n+1];
-                    flag=true;
-                }counter--;
-                break;
+        if (children != null) {
+            for (int i = 0; i < children.length; i++) {
+                Human childIndex = children[i];
+                if (childIndex.equals(child)) {
+                    for (int n = i; n < children.length - 1; n++) {
+                        children[n] = children[n + 1];
+                        flag = true;
+                    }
+                    counter--;
+                    break;
 
-            }
-        }return flag;
-    }
+                }
+            }}
+            return flag;
+        }
+
 
     public boolean deleteChild(int index) {
         boolean flag = false;
+        if (children != null) {
         for (int i = 0; i < children.length; i++) {
             if (index == i) {
                 for(int n = i; n < children.length - 1; n++){
@@ -77,14 +82,15 @@ public class Family {
                 }counter--;
                 break;
             }
-        }
+        }}
         return flag;
     }
 
     public void addChild(Human child)  {
-        this.children[this.counter] = child;
-        counter++;
-
+        if(children != null) {
+            this.children[this.counter] = child;
+            counter++;
+        }
     }
 
 

@@ -1,7 +1,5 @@
 package az.company.classes.lesson9;
 
-import az.company.classes.Array;
-
 import java.util.*;
 
 public class List {
